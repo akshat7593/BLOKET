@@ -11,6 +11,8 @@
 		AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */; };
 		AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */; };
 		AC9E2506220EFBFA005CA487 /* Model_contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */; };
+		AC9E254B220F12F9005CA487 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */; };
+		AC9E254F220F12F9005CA487 /* Call_Blocking.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC9E2548220F12F9005CA487 /* Call_Blocking.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
 		ACD65AAF21FED2CA00CE19FE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */; };
 		ACD65AB121FED2CA00CE19FE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AB021FED2CA00CE19FE /* SecondViewController.swift */; };
@@ -22,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AC9E254D220F12F9005CA487 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACD65AA121FED2CA00CE19FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC9E2547220F12F9005CA487;
+			remoteInfo = Call_Blocking;
+		};
 		ACD65AC021FED2CD00CE19FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ACD65AA121FED2CA00CE19FE /* Project object */;
@@ -31,11 +40,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AC9E2553220F12F9005CA487 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC9E254F220F12F9005CA487 /* Call_Blocking.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsTableViewController.swift; sourceTree = "<group>"; };
 		AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
 		AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_contact.xcdatamodel; sourceTree = "<group>"; };
+		AC9E2548220F12F9005CA487 /* Call_Blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_Blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
+		AC9E254C220F12F9005CA487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +77,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AC9E2545220F12F9005CA487 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACD65AA621FED2CA00CE19FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,11 +101,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC9E2549220F12F9005CA487 /* Call_Blocking */ = {
+			isa = PBXGroup;
+			children = (
+				AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */,
+				AC9E254C220F12F9005CA487 /* Info.plist */,
+			);
+			path = Call_Blocking;
+			sourceTree = "<group>";
+		};
 		ACD65AA021FED2CA00CE19FE = {
 			isa = PBXGroup;
 			children = (
 				ACD65AAB21FED2CA00CE19FE /* temp2 */,
 				ACD65AC221FED2CD00CE19FE /* temp2Tests */,
+				AC9E2549220F12F9005CA487 /* Call_Blocking */,
 				ACD65AAA21FED2CA00CE19FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +125,7 @@
 			children = (
 				ACD65AA921FED2CA00CE19FE /* temp2.app */,
 				ACD65ABF21FED2CD00CE19FE /* temp2Tests.xctest */,
+				AC9E2548220F12F9005CA487 /* Call_Blocking.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +161,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AC9E2547220F12F9005CA487 /* Call_Blocking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC9E2550220F12F9005CA487 /* Build configuration list for PBXNativeTarget "Call_Blocking" */;
+			buildPhases = (
+				AC9E2544220F12F9005CA487 /* Sources */,
+				AC9E2545220F12F9005CA487 /* Frameworks */,
+				AC9E2546220F12F9005CA487 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Call_Blocking;
+			productName = Call_Blocking;
+			productReference = AC9E2548220F12F9005CA487 /* Call_Blocking.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		ACD65AA821FED2CA00CE19FE /* temp2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "temp2" */;
@@ -124,10 +185,12 @@
 				ACD65AA521FED2CA00CE19FE /* Sources */,
 				ACD65AA621FED2CA00CE19FE /* Frameworks */,
 				ACD65AA721FED2CA00CE19FE /* Resources */,
+				AC9E2553220F12F9005CA487 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC9E254E220F12F9005CA487 /* PBXTargetDependency */,
 			);
 			name = temp2;
 			productName = temp2;
@@ -162,6 +225,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Akshat Agrawal";
 				TargetAttributes = {
+					AC9E2547220F12F9005CA487 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					ACD65AA821FED2CA00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -186,11 +252,19 @@
 			targets = (
 				ACD65AA821FED2CA00CE19FE /* temp2 */,
 				ACD65ABE21FED2CD00CE19FE /* temp2Tests */,
+				AC9E2547220F12F9005CA487 /* Call_Blocking */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AC9E2546220F12F9005CA487 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACD65AA721FED2CA00CE19FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +285,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AC9E2544220F12F9005CA487 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC9E254B220F12F9005CA487 /* CallDirectoryHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACD65AA521FED2CA00CE19FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +319,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AC9E254E220F12F9005CA487 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC9E2547220F12F9005CA487 /* Call_Blocking */;
+			targetProxy = AC9E254D220F12F9005CA487 /* PBXContainerItemProxy */;
+		};
 		ACD65AC121FED2CD00CE19FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ACD65AA821FED2CA00CE19FE /* temp2 */;
@@ -264,6 +351,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AC9E2551220F12F9005CA487 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
+				INFOPLIST_FILE = Call_Blocking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.temp2.Call-Blocking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC9E2552220F12F9005CA487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
+				INFOPLIST_FILE = Call_Blocking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.temp2.Call-Blocking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		ACD65AC621FED2CD00CE19FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -383,6 +510,7 @@
 		ACD65AC921FED2CD00CE19FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
@@ -401,6 +529,7 @@
 		ACD65ACA21FED2CD00CE19FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
@@ -461,6 +590,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AC9E2550220F12F9005CA487 /* Build configuration list for PBXNativeTarget "Call_Blocking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC9E2551220F12F9005CA487 /* Debug */,
+				AC9E2552220F12F9005CA487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ACD65AA421FED2CA00CE19FE /* Build configuration list for PBXProject "temp2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -15,6 +15,13 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func test_transfer(_ sender: UIButton) {
+        print(objtest_transfer.test_transfer())
+        var copiedArray: NSArray = NSArray()
+        copiedArray=objtest_transfer.results
+        for i in 0...4{
+            print(copiedArray[i])}
+    }
+    
 }
 

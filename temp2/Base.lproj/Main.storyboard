@@ -269,7 +269,7 @@
         <!--Blocklist-->
         <scene sceneID="aGz-bO-WFi">
             <objects>
-                <viewController id="dNI-39-GZP" sceneMemberID="viewController">
+                <viewController id="dNI-39-GZP" customClass="FirstViewController" customModule="temp2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0V-8E-5fG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,6 +281,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c3-zI-mMi">
+                                <rect key="frame" x="159" y="417" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Transfer"/>
+                                <connections>
+                                    <action selector="test_transfer:" destination="dNI-39-GZP" eventType="touchUpInside" id="rPI-Aa-AcT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="z0I-gb-Ns3"/>
@@ -289,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kdP-Rt-aXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1" y="789"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="788.45577211394311"/>
         </scene>
         <!--Item-->
         <scene sceneID="Zd4-7U-Aca">
@@ -471,10 +479,31 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10V-Me-vQc">
+                                <rect key="frame" x="171" y="269" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ADD"/>
+                                <connections>
+                                    <action selector="Add_contact:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="q4c-5x-OuH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-eb-YJ7">
+                                <rect key="frame" x="168" y="394" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fetch"/>
+                                <connections>
+                                    <action selector="fetch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="5Sq-7Y-hZp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="Add_contact" destination="10V-Me-vQc" id="XRh-zc-vYv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

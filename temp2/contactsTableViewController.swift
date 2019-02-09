@@ -8,7 +8,7 @@
 
 import UIKit
 import Contacts
-
+import CoreData
 class contactsTableViewController: UITableViewController {
     
     
@@ -70,7 +70,6 @@ class contactsTableViewController: UITableViewController {
                         print(contact.givenName)
                         print(contact.familyName)
                         print(contact.phoneNumbers.first?.value.stringValue ?? "")
-                        
                         
                         favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
                     })
