@@ -10,6 +10,7 @@
 		AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */; };
 		AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */; };
 		AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */; };
+		AC9E2506220EFBFA005CA487 /* Model_contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
 		ACD65AAF21FED2CA00CE19FE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */; };
 		ACD65AB121FED2CA00CE19FE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AB021FED2CA00CE19FE /* SecondViewController.swift */; };
@@ -34,6 +35,7 @@
 		AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsTableViewController.swift; sourceTree = "<group>"; };
 		AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
+		AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_contact.xcdatamodel; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				ACD65ABA21FED2CD00CE19FE /* Info.plist */,
 				AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */,
 				AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */,
+				AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */,
 			);
 			path = temp2;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				ACD65AB121FED2CA00CE19FE /* SecondViewController.swift in Sources */,
 				ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */,
 				AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */,
+				AC9E2506220EFBFA005CA487 /* Model_contact.xcdatamodeld in Sources */,
 				ACD65AAF21FED2CA00CE19FE /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +489,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */,
+			);
+			currentVersion = AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */;
+			path = Model_contact.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ACD65AA121FED2CA00CE19FE /* Project object */;
 }

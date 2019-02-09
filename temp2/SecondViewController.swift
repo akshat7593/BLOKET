@@ -10,12 +10,10 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var contact_view: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //check
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-
 }
 

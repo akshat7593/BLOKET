@@ -11,6 +11,7 @@ import Contacts
 
 class contactsTableViewController: UITableViewController {
     
+    
     let cellId = "cellId123123"
     
     //https://www.letsbuildthatapp.com/course_video?id=1852
@@ -211,7 +212,6 @@ class contactsTableViewController: UITableViewController {
     }
     
 }
-
 
 
 
