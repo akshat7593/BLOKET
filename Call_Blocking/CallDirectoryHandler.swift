@@ -13,7 +13,9 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
 
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
-
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2", completionHandler: {(error) -> Void in if let error = error {
+            print(error.localizedDescription)
+            }})
         // Check whether this is an "incremental" data request. If so, only provide the set of phone number blocking
         // and identification entries which have been added or removed since the last time this extension's data was loaded.
         // But the extension must still be prepared to provide the full set of data at any time, so add all blocking
