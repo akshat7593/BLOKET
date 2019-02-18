@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17D5F52212846C00DF9D3A /* MsgViewController.swift */; };
 		AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */; };
 		AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */; };
 		AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */; };
-		AC9E2506220EFBFA005CA487 /* Model_contact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */; };
+		AC7B37C1221AC40600B137DD /* Number_model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */; };
 		AC9E254B220F12F9005CA487 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */; };
 		AC9E254F220F12F9005CA487 /* Call_Blocking.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC9E2548220F12F9005CA487 /* Call_Blocking.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC9E255522103B63005CA487 /* SendMsgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E255422103B63005CA487 /* SendMsgController.swift */; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
-		ACD65AAF21FED2CA00CE19FE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */; };
+		ACD65AAF21FED2CA00CE19FE /* Blackwhitelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* Blackwhitelist.swift */; };
 		ACD65AB121FED2CA00CE19FE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AB021FED2CA00CE19FE /* SecondViewController.swift */; };
 		ACD65AB421FED2CA00CE19FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB221FED2CA00CE19FE /* Main.storyboard */; };
 		ACD65AB621FED2CD00CE19FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB521FED2CD00CE19FE /* Assets.xcassets */; };
@@ -55,16 +57,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC17D5F52212846C00DF9D3A /* MsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
+		AC17D5F72213F6EC00DF9D3A /* temp2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = temp2.entitlements; sourceTree = "<group>"; };
 		AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsTableViewController.swift; sourceTree = "<group>"; };
 		AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
-		AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model_contact.xcdatamodel; sourceTree = "<group>"; };
+		AC7B37C0221AC40600B137DD /* Number_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Number_model.xcdatamodel; sourceTree = "<group>"; };
 		AC9E2548220F12F9005CA487 /* Call_Blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_Blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		AC9E254C220F12F9005CA487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9E255422103B63005CA487 /* SendMsgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMsgController.swift; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		ACD65AAE21FED2CA00CE19FE /* Blackwhitelist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blackwhitelist.swift; sourceTree = "<group>"; };
 		ACD65AB021FED2CA00CE19FE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		ACD65AB321FED2CA00CE19FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACD65AB521FED2CD00CE19FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,18 +138,21 @@
 		ACD65AAB21FED2CA00CE19FE /* temp2 */ = {
 			isa = PBXGroup;
 			children = (
+				AC17D5F72213F6EC00DF9D3A /* temp2.entitlements */,
 				AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */,
 				ACD65ACE21FEF01900CE19FE /* DialViewController.swift */,
 				ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */,
-				ACD65AAE21FED2CA00CE19FE /* FirstViewController.swift */,
+				ACD65AAE21FED2CA00CE19FE /* Blackwhitelist.swift */,
+				AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */,
 				ACD65AB021FED2CA00CE19FE /* SecondViewController.swift */,
 				ACD65AB221FED2CA00CE19FE /* Main.storyboard */,
 				ACD65AB521FED2CD00CE19FE /* Assets.xcassets */,
 				ACD65AB721FED2CD00CE19FE /* LaunchScreen.storyboard */,
+				AC17D5F52212846C00DF9D3A /* MsgViewController.swift */,
 				ACD65ABA21FED2CD00CE19FE /* Info.plist */,
 				AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */,
 				AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */,
-				AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */,
+				AC9E255422103B63005CA487 /* SendMsgController.swift */,
 			);
 			path = temp2;
 			sourceTree = "<group>";
@@ -230,6 +238,11 @@
 					};
 					ACD65AA821FED2CA00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					ACD65ABE21FED2CD00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
@@ -297,14 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9E255522103B63005CA487 /* SendMsgController.swift in Sources */,
 				AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */,
+				AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */,
 				ACD65ACF21FEF01900CE19FE /* DialViewController.swift in Sources */,
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
 				ACD65AB121FED2CA00CE19FE /* SecondViewController.swift in Sources */,
+				AC7B37C1221AC40600B137DD /* Number_model.xcdatamodeld in Sources */,
 				ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */,
 				AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */,
-				AC9E2506220EFBFA005CA487 /* Model_contact.xcdatamodeld in Sources */,
-				ACD65AAF21FED2CA00CE19FE /* FirstViewController.swift in Sources */,
+				ACD65AAF21FED2CA00CE19FE /* Blackwhitelist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +527,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = temp2/temp2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = temp2/Info.plist;
@@ -531,6 +547,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = temp2/temp2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = temp2/Info.plist;
@@ -551,7 +568,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MWY975G533;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = temp2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,7 +589,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MWY975G533;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = temp2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,13 +646,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		AC9E2504220EFBFA005CA487 /* Model_contact.xcdatamodeld */ = {
+		AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */,
+				AC7B37C0221AC40600B137DD /* Number_model.xcdatamodel */,
 			);
-			currentVersion = AC9E2505220EFBFA005CA487 /* Model_contact.xcdatamodel */;
-			path = Model_contact.xcdatamodeld;
+			currentVersion = AC7B37C0221AC40600B137DD /* Number_model.xcdatamodel */;
+			path = Number_model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

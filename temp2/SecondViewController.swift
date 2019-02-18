@@ -42,14 +42,14 @@ class SecondViewController: UIViewController {
     @IBAction func fetch(_ sender: UIButton) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contacts")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Block")
         //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "name") as! String)
-                print(data.value(forKey: "phone")as! Int64)
+                print(data.value(forKey: "block_number") as! String)
+                //print(data.value(forKey: "phone")as! Int64)
             }
 
         } catch {

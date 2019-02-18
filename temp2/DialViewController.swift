@@ -8,7 +8,7 @@
 import Foundation
 import AudioToolbox
 import UIKit
-
+import CallKit
 class DialViewController: UIViewController {
 
     @IBOutlet weak var zero_outlet: UIButton!
@@ -32,10 +32,44 @@ class DialViewController: UIViewController {
         tapGesture_cross.numberOfTapsRequired = 1
         cross_outlet.addGestureRecognizer(tapGesture_cross)
         cross_outlet.addGestureRecognizer(longGesture_cross)
-        
+        //refreshExtensionState()
 
         // Do any additional setup after loading the view.
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        refreshExtensionState()
+//    }
+//    private func refreshExtensionState() {
+//        print("inside func refreshExtensionState")
+////        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
+////            print("akshat"+error.localizedDescription)
+////
+////            }})
+//        
+//        CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: { (enabledStatus,error) ->
+//            
+//            Void in if let error = error {
+//                print(error.localizedDescription)
+//                
+//            }
+//            CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier:"com.akshat.temp2.Call-Blocking", completionHandler: {
+//                (error) ->
+//                
+//                Void in if let error = error {
+//                    print(error.localizedDescription)
+//                    
+//                    
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    //self.hud?.hide(animated: true)
+//                }
+//            })
+//            
+//            print("No error")
+//        })
+////        CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: "com.akshat.temp2.Call_Blocking", completionHandler: {(status, error) -> Void in if let error = error { print(error.localizedDescription) } })
+//    }
     @objc func tap() {
         dailpad.text = dailpad.text! + "0"
         //dail_view.isHidden=true;
