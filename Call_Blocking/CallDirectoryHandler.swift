@@ -16,6 +16,13 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         
         print("check0")
         print("check0ii")
+        var defaults = UserDefaults(suiteName: "group.tag.number")
+        defaults!.synchronize()
+        
+        // Check for null value before setting
+        
+        let restoredValue = defaults!.string(forKey: "block_number");
+        print(restoredValue!)
         // Check whether this is an "incremental" data request. If so, only provide the set of phone number blocking
         // and identification entries which have been added or removed since the last time this extension's data was loaded.
         // But the extension must still be prepared to provide the full set of data at any time, so add all blocking
@@ -41,7 +48,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
         //
         // Numbers must be provided in numerically ascending order.
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ +919953777935 ]
+        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ +919872717155 ]
         for phoneNumber in allPhoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }

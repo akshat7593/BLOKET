@@ -20,20 +20,38 @@ class FirstViewController: UIViewController {
    
     @IBAction func block_number(_ sender: UIButton) {
         let number=block_number.text!
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Block", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        newUser.setValue(number,forKey:"block_number")
-        //newUser.setValue(89999999999,forKey:"phone")
-        do {
-            try context.save()
-        } catch {
-            print("Failed saving")
-        }
-        
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//        let entity = NSEntityDescription.entity(forEntityName: "Block", in: context)
+//        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+//        newUser.setValue(number,forKey:"block_number")
+//        //newUser.setValue(89999999999,forKey:"phone")
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Failed saving")
+//        }
+//        let defaults = UserDefaults(suiteName: "group.tag.number")
+//        defaults?.set(number, forKey: "block_number")
         print("tets")
+        
+     
+        
+        
+        let defaults = UserDefaults.standard
+        var array = defaults.object(forKey: "block_number1") as? [String] ?? [String]()
+        print(array)
+        array += [number]
+        //(suiteName: "group.tag.number")
+//        let def=UserDefaults.standard
+//        var myarray=defaults?.stringArray(forKey:"block_number") ?? [String]()
+//        myarray.append(number)
+//        print(myarray)
+        defaults.set(array, forKey: "block_number1")
+        //defaults!.synchronize()
+        
+        
     }
 }
 

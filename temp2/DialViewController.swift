@@ -32,19 +32,19 @@ class DialViewController: UIViewController {
         tapGesture_cross.numberOfTapsRequired = 1
         cross_outlet.addGestureRecognizer(tapGesture_cross)
         cross_outlet.addGestureRecognizer(longGesture_cross)
-        //refreshExtensionState()
+        refreshExtensionState()
 
         // Do any additional setup after loading the view.
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        refreshExtensionState()
 //    }
-//    private func refreshExtensionState() {
-//        print("inside func refreshExtensionState")
-////        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
-////            print("akshat"+error.localizedDescription)
-////
-////            }})
+    private func refreshExtensionState() {
+        print("inside func refreshExtensionState")
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2", completionHandler: {(error) -> Void in if let error = error {
+            print("akshat"+error.localizedDescription)
+            }})
+    }
 //        
 //        CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: { (enabledStatus,error) ->
 //            

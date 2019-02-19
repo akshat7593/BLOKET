@@ -63,6 +63,7 @@
 		AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
 		AC7B37C0221AC40600B137DD /* Number_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Number_model.xcdatamodel; sourceTree = "<group>"; };
+		AC7B37C9221B198E00B137DD /* Call_Blocking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Call_Blocking.entitlements; sourceTree = "<group>"; };
 		AC9E2548220F12F9005CA487 /* Call_Blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_Blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		AC9E254C220F12F9005CA487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,9 +107,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC7B37C2221ACD0100B137DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AC9E2549220F12F9005CA487 /* Call_Blocking */ = {
 			isa = PBXGroup;
 			children = (
+				AC7B37C9221B198E00B137DD /* Call_Blocking.entitlements */,
 				AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */,
 				AC9E254C220F12F9005CA487 /* Info.plist */,
 			);
@@ -122,6 +131,7 @@
 				ACD65AC221FED2CD00CE19FE /* temp2Tests */,
 				AC9E2549220F12F9005CA487 /* Call_Blocking */,
 				ACD65AAA21FED2CA00CE19FE /* Products */,
+				AC7B37C2221ACD0100B137DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,12 +245,32 @@
 				TargetAttributes = {
 					AC9E2547220F12F9005CA487 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					ACD65AA821FED2CA00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.WAC = {
+								enabled = 0;
 							};
 						};
 					};
@@ -370,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Call_Blocking/Call_Blocking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = Call_Blocking/Info.plist;
@@ -390,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Call_Blocking/Call_Blocking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = Call_Blocking/Info.plist;
