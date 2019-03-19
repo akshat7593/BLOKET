@@ -10,25 +10,87 @@ import UIKit
 import Contacts
 import CoreData
 import SQLite
-class contactsTableViewController: UITableViewController {
+class groupContactsTableViewController: UITableViewController {
     
     var database: Connection!
     var favoritableContacts = [FavoritableContact]()
     var index : Int = 0
-    let blockTable = Table("blocknumbers")
-    let number = Expression<String>("number")
+   
+    let cellId = "cellId123"
     
-    let cellId = "cellId123123"
-    var blockarray = [String]()
+    //trying to make table of all group names
+    var groupNamesTable = Table("GroupNameTable")
+    var gColumn = Expression<String>("names")
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        print("viewWillAppear")
-//        blockarray.removeAll()
-//        self.tableView.reloadData()
-//        self.viewDidLoad()
-//    }
+    var tableName = ""
+
+    var grouptable = Table("1")
+    var column = Expression<String>("number")
+    var grouparray = [String]()
     
-    func someMethodIWantToCallInsert(cell: UITableViewCell) {
+    
+    func makeTable(groupName: String?){
+        print("table " + groupName! + " created")
+        let groupTable = Table(groupName!)
+        grouptable = groupTable
+        print(groupTable)
+        print(grouptable)
+        tableName = groupName!
+        
+        
+        //directory for table
+        do {
+            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
+            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent(groupName!).appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database = database
+        } catch {
+            print(error)
+        }
+        //---------
+        
+        //directory for table
+        do {
+            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
+            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database = database
+        } catch {
+            print("abc")
+            print(error)
+        }
+        //---------
+        
+        let group_table = groupTable.create{ (table) in
+            table.column(column, primaryKey: true)
+        }
+        
+        do {
+            try self.database.run(group_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        
+        //group names table
+        let groupNames_table = groupNamesTable.create{ (table) in
+            table.column(gColumn, primaryKey: true)
+        }
+        
+        do {
+            try self.database.run(groupNames_table)
+            print("Created GroupTableNames Table")
+        } catch {
+            print("BCD")
+            print(error)
+        }
+    }
+    
+    func InsertIntoGroup(cell: UITableViewCell) {
         //        print("Inside of ViewController now...")
         
         // we're going to figure out which name we're clicking on
@@ -37,9 +99,9 @@ class contactsTableViewController: UITableViewController {
         
         let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
         let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
-        print(type(of: num))
+        //print(type(of: num))
         if(num != nil){
-            blockarray.append(num)
+            grouparray.append(num)
         }
         else{
             print("nill")
@@ -52,7 +114,7 @@ class contactsTableViewController: UITableViewController {
         //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
         
         cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print(blockarray)
+        print(grouparray)
     }
     
     func someMethodIWantToCallRemove(cell: UITableViewCell) {
@@ -65,8 +127,8 @@ class contactsTableViewController: UITableViewController {
         let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
         let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
         if(num != nil){
-            var filterarray = blockarray.filter{ $0 != num }
-            blockarray = filterarray
+            var filterarray = grouparray.filter{ $0 != num }
+            grouparray = filterarray
         }
         else{
             print("nill")
@@ -79,7 +141,7 @@ class contactsTableViewController: UITableViewController {
         //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
         
         cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print(blockarray)
+        print(grouparray)
     }
     
     var twoDimensionalArray = [ExpandableNames]()
@@ -88,31 +150,7 @@ class contactsTableViewController: UITableViewController {
     
     private func fetchContacts(){
         print("Attempting to fetch Contacts")
-        //making database table
-        do {
-            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
-            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("blocknumbers").appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-        } catch {
-            print(error)
-        }
-        
-        let block_table = self.blockTable.create { (table) in
-            table.column(self.number, primaryKey: true)
-        }
-        
-        do {
-            try self.database.run(block_table)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
-        //-------------
-        
-        print("abc")
+
         let store = CNContactStore()
         
         store.requestAccess(for: .contacts) { (granted, err) in
@@ -122,7 +160,7 @@ class contactsTableViewController: UITableViewController {
             }
             
             if granted{
-                print("Access granted")
+                //print("Access granted")
                 
                 let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
@@ -132,10 +170,6 @@ class contactsTableViewController: UITableViewController {
                     
                     
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
-                        
-                        //print(contact.givenName)
-                        //print(contact.familyName)
-                        //print(contact.phoneNumbers.first?.value.stringValue ?? "")
                         
                         self.favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
                         
@@ -160,47 +194,48 @@ class contactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("contactTableView viewDidload")
+        
         fetchContacts()
         
-
+        
         
         navigationItem.title = "Contacts"
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        tableView.register(ContactCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(groupContactCell.self, forCellReuseIdentifier: cellId)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let button = UIButton(type: .system)
-        button.setTitle("Block", for: .normal)
+        button.setTitle("Done", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addIntoTable), for: .touchUpInside)
         
         button.tag = section
         
         return button
     }
     
-    @objc func handleExpandClose(button: UIButton) {
-        //print("Trying to expand and close section...")
+    @objc func addIntoTable(button: UIButton) {
+        print("Adding numbers into database")
         
         
         //var finArray = [String]()
-        print("INSERT TAPPED")
+        print("DONE TAPPED")
         
         //self.loadView()
         
         
         //adding blocked numbers in database
-        for num in blockarray{
+        print(grouparray)
+        for num in grouparray{
             //print(type(of: num))
-            var insertUser = self.blockTable.insert(self.number <- num)
+            let insertUser = self.grouptable.insert(self.column <- num)
             //print("teste")
             //print(insertUser)
             do {
@@ -211,20 +246,41 @@ class contactsTableViewController: UITableViewController {
             }
         }
         
+        //adding table name to groupNamesTable
+        let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName)
+        do {
+            try self.database.run(insertTableName)
+            print("Table name INSERTED ")
+        } catch {
+            print(error)
+        }
+        
         //displaying blocked numbers
         do{
-            let users = try self.database.prepare(self.blockTable)
+            let users = try self.database.prepare(self.grouptable)
             for user in users {
-                print("userNumber: \(user[self.number])")
+                print("userNumber: \(user[self.column])")
                 //finArray.append(user[self.number])
             }
         }
-            catch{
-                print(error)
+        catch{
+            print(error)
+        }
+        
+        //displaying names in tableNames
+        do{
+            let users = try self.database.prepare(self.groupNamesTable)
+            for user in users {
+                print("tableName: \(user[self.gColumn])")
             }
+        }
+        catch{
+            print(error)
+        }
         
         print("fetch controller")
-        self.viewDidLoad()
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -246,7 +302,7 @@ class contactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactCell
         
-        let cell = ContactCell(style: .subtitle, reuseIdentifier: cellId)
+        let cell = groupContactCell(style: .subtitle, reuseIdentifier: cellId)
         cell.temp(cN : favoritableContacts[index].contact.phoneNumbers[0].value.stringValue)
         index+=1
         //print(index)
@@ -257,15 +313,15 @@ class contactsTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
         cell.detailTextLabel?.text = favoritableContact.contact.phoneNumbers.first?.value.stringValue
-        print("2 new")
+        //print("2 new")
         
         //cell.accessoryView?.tintColor = favoritableContact.hasFavorited ? UIColor.red : .lightGray
         
         
         
-//        if showIndexPaths {
-//            //cell.textLabel?.text = "\(favoritableContact.name)   Section:\(indexPath.section) Row:\(indexPath.row)"
-//        }
+        //        if showIndexPaths {
+        //            //cell.textLabel?.text = "\(favoritableContact.name)   Section:\(indexPath.section) Row:\(indexPath.row)"
+        //        }
         
         return cell
     }

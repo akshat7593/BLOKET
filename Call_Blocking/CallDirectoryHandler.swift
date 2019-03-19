@@ -8,21 +8,26 @@
 
 import Foundation
 import CallKit
+import SQLite
 
 class CallDirectoryHandler: CXCallDirectoryProvider {
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
+        //------------------
         
         
+        //print("fetch pressed")
+//        do{
+//            let users = try self.database.prepare(self.usersTable)
+//        }
+        
+        //-----------------------
         print("check0")
         print("check0ii")
-        var defaults = UserDefaults(suiteName: "group.tag.number")
-        defaults!.synchronize()
-        
-        // Check for null value before setting
-        
-        let restoredValue = defaults!.string(forKey: "block_number");
-        print(restoredValue!)
+        let defaults = UserDefaults.standard
+        //(suiteName: "group.tag.number")
+        let array = defaults.object(forKey: "block_number1") as? [String] ?? [String]()
+        print(array)
         // Check whether this is an "incremental" data request. If so, only provide the set of phone number blocking
         // and identification entries which have been added or removed since the last time this extension's data was loaded.
         // But the extension must still be prepared to provide the full set of data at any time, so add all blocking
