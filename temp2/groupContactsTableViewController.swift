@@ -12,7 +12,8 @@ import CoreData
 import SQLite
 class groupContactsTableViewController: UITableViewController {
     
-    var database: Connection!
+    var database1: Connection!
+    var database2: Connection!
     var favoritableContacts = [FavoritableContact]()
     var index : Int = 0
    
@@ -33,19 +34,19 @@ class groupContactsTableViewController: UITableViewController {
         print("table " + groupName! + " created")
         let groupTable = Table(groupName!)
         grouptable = groupTable
-        print(groupTable)
-        print(grouptable)
+
         tableName = groupName!
         
         
         //directory for table
         do {
-            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
-            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
+            
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent(groupName!).appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
-            self.database = database
+            self.database1 = database
+            print(documentDirectory)
+            print("-------")
         } catch {
             print(error)
         }
@@ -53,41 +54,28 @@ class groupContactsTableViewController: UITableViewController {
         
         //directory for table
         do {
-            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
-            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
-            self.database = database
+            self.database2 = database
         } catch {
             print("abc")
             print(error)
         }
         //---------
         
-        let group_table = groupTable.create{ (table) in
-            table.column(column, primaryKey: true)
+        let group_table = self.grouptable.create{ (table) in
+            table.column(self.column, primaryKey: true)
         }
         
         do {
-            try self.database.run(group_table)
+            try self.database1.run(group_table)
             print("Created Table")
         } catch {
             print(error)
         }
         
-        //group names table
-        let groupNames_table = groupNamesTable.create{ (table) in
-            table.column(gColumn, primaryKey: true)
-        }
-        
-        do {
-            try self.database.run(groupNames_table)
-            print("Created GroupTableNames Table")
-        } catch {
-            print("BCD")
-            print(error)
-        }
+
     }
     
     func InsertIntoGroup(cell: UITableViewCell) {
@@ -239,7 +227,7 @@ class groupContactsTableViewController: UITableViewController {
             //print("teste")
             //print(insertUser)
             do {
-                try self.database.run(insertUser)
+                try self.database1.run(insertUser)
                 print("INSERTED USER")
             } catch {
                 print(error)
@@ -249,7 +237,7 @@ class groupContactsTableViewController: UITableViewController {
         //adding table name to groupNamesTable
         let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName)
         do {
-            try self.database.run(insertTableName)
+            try self.database2.run(insertTableName)
             print("Table name INSERTED ")
         } catch {
             print(error)
@@ -257,7 +245,7 @@ class groupContactsTableViewController: UITableViewController {
         
         //displaying blocked numbers
         do{
-            let users = try self.database.prepare(self.grouptable)
+            let users = try self.database1.prepare(self.grouptable)
             for user in users {
                 print("userNumber: \(user[self.column])")
                 //finArray.append(user[self.number])
@@ -269,7 +257,7 @@ class groupContactsTableViewController: UITableViewController {
         
         //displaying names in tableNames
         do{
-            let users = try self.database.prepare(self.groupNamesTable)
+            let users = try self.database2.prepare(self.groupNamesTable)
             for user in users {
                 print("tableName: \(user[self.gColumn])")
             }

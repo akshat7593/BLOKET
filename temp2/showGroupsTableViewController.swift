@@ -14,6 +14,8 @@ class showGroupsTableViewController: UIViewController {
     let usersTable = Table("GroupNameTable")
     let names = Expression<String>("names")
     
+    var groupTable = Table("1")
+    var groupName = Expression<String>("number")
   
     @IBOutlet weak var groupTableView: UITableView!
     
@@ -55,6 +57,10 @@ class showGroupsTableViewController: UIViewController {
             print(error)
         }
         
+        
+        //navigationItem.title = "Contacts"
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
        //self.tableView.reloadData()
@@ -70,27 +76,36 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         return groupDataModel.count
     }
     
+    func fetchGroupContacts(tablename: String){
+        do {
+            //print("first")
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database = database
+        } catch {
+            print(error)
+        }
+        
+        
+    }
     
-    @objc func delete_cell(sender:UIButton){
-//        print("delete")
-//        print(sender.accessibilityIdentifier!)
-//        //print(sender.currentTitle!)
-//
-//        print("DELETE TAPPED")
-//        guard let usernumber = sender.accessibilityIdentifier
-//            //let userId = Int(userIdString)
-//            else { return }
-//        print(usernumber)
-//
-//        let user = self.usersTable.filter(self.number == usernumber)
-//        let deleteUser = user.delete()
-//        do {
-//            try self.database.run(deleteUser)
-//        } catch {
-//            print(error)
-//        }
-//        self.tableView.reloadData()
-//        self.viewDidLoad()
+    @objc func edit_group(sender:UIButton){
+        print("edit")
+        print(sender.accessibilityIdentifier!)
+        groupTable = Table(sender.accessibilityIdentifier!)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "editGroupTableViewController") as! editGroupTableViewController
+        nextViewController.setTable(tableName: sender.accessibilityIdentifier!)
+        self.present(nextViewController, animated: true, completion: nil)
+        //fetchGroupContacts(tablename: sender.accessibilityIdentifier!)
+        
+        
+        
+        
+        //self.tableView.reloadData()
+        self.viewDidLoad()
         
         
         
@@ -107,7 +122,7 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         cell.edit.setTitle("Edit", for: .normal)
         cell.edit.accessibilityIdentifier=cell.name.text
         //print(cell.delete.accessibilityIdentifier!)
-        cell.edit.addTarget(self, action:#selector(delete_cell), for: .touchUpInside)
+        cell.edit.addTarget(self, action:#selector(edit_group), for: .touchUpInside)
         
         cell.switchBtn.setOn(false, animated: true)
         

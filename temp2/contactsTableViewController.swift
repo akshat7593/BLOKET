@@ -14,6 +14,7 @@ class contactsTableViewController: UITableViewController {
     
     var database: Connection!
     var favoritableContacts = [FavoritableContact]()
+    var twoDimensionalArray = [ExpandableNames]()
     var index : Int = 0
     let blockTable = Table("blocknumbers")
     let number = Expression<String>("number")
@@ -82,7 +83,7 @@ class contactsTableViewController: UITableViewController {
         print(blockarray)
     }
     
-    var twoDimensionalArray = [ExpandableNames]()
+    
     
     
     

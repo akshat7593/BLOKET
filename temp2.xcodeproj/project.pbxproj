@@ -14,6 +14,9 @@
 		AC04652B2240E79C003BD775 /* groupDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04652A2240E79C003BD775 /* groupDataModel.swift */; };
 		AC04652F2240EDC6003BD775 /* groupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC04652E2240EDC6003BD775 /* groupTableViewCell.swift */; };
 		AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17D5F52212846C00DF9D3A /* MsgViewController.swift */; };
+		AC29CB2A2241143800794C4E /* editGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB292241143800794C4E /* editGroupTableViewController.swift */; };
+		AC29CB32224118FB00794C4E /* editGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB31224118FB00794C4E /* editGroupTableViewCell.swift */; };
+		AC29CB362241329A00794C4E /* checkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB352241329A00794C4E /* checkViewController.swift */; };
 		AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */; };
 		AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */; };
 		AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */; };
@@ -143,6 +146,9 @@
 		AC04652E2240EDC6003BD775 /* groupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupTableViewCell.swift; sourceTree = "<group>"; };
 		AC17D5F52212846C00DF9D3A /* MsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
 		AC17D5F72213F6EC00DF9D3A /* temp2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = temp2.entitlements; sourceTree = "<group>"; };
+		AC29CB292241143800794C4E /* editGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editGroupTableViewController.swift; sourceTree = "<group>"; };
+		AC29CB31224118FB00794C4E /* editGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editGroupTableViewCell.swift; sourceTree = "<group>"; };
+		AC29CB352241329A00794C4E /* checkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkViewController.swift; sourceTree = "<group>"; };
 		AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactsTableViewController.swift; sourceTree = "<group>"; };
 		AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
@@ -260,6 +266,9 @@
 				AC046526224034DA003BD775 /* showGroupsTableViewController.swift */,
 				AC04652A2240E79C003BD775 /* groupDataModel.swift */,
 				AC04652E2240EDC6003BD775 /* groupTableViewCell.swift */,
+				AC29CB292241143800794C4E /* editGroupTableViewController.swift */,
+				AC29CB31224118FB00794C4E /* editGroupTableViewCell.swift */,
+				AC29CB352241329A00794C4E /* checkViewController.swift */,
 			);
 			path = temp2;
 			sourceTree = "<group>";
@@ -520,11 +529,14 @@
 				AC04652522401AD0003BD775 /* groupContactCell.swift in Sources */,
 				AC04652B2240E79C003BD775 /* groupDataModel.swift in Sources */,
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
+				AC29CB362241329A00794C4E /* checkViewController.swift in Sources */,
+				AC29CB2A2241143800794C4E /* editGroupTableViewController.swift in Sources */,
 				ACE93127221C70BB00229A27 /* DataModel.swift in Sources */,
 				ACE93129221C711800229A27 /* TableViewCell.swift in Sources */,
 				AC046527224034DA003BD775 /* showGroupsTableViewController.swift in Sources */,
 				AC7B37C1221AC40600B137DD /* Number_model.xcdatamodeld in Sources */,
 				AC04652F2240EDC6003BD775 /* groupTableViewCell.swift in Sources */,
+				AC29CB32224118FB00794C4E /* editGroupTableViewCell.swift in Sources */,
 				ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */,
 				AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */,
 				ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */,

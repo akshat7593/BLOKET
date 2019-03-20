@@ -43,6 +43,10 @@ class GroupViewController: UIViewController {
             
         //----------------------
         
+        
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
         do{
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
@@ -52,9 +56,8 @@ class GroupViewController: UIViewController {
             print("abc")
             print(error)
         }
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
+        
+        
         print("Button tapped")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "groupContactsTableViewController") as! groupContactsTableViewController
@@ -83,11 +86,28 @@ class GroupViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
         else{
+            let gTable = self.groupNamesTable.create { (table) in
+                table.column(self.gColumn, primaryKey: true)
+            }
+            
+            do {
+                try self.database.run(gTable)
+                print("Created Table")
+            } catch {
+                print(error)
+            }
+            
+            
             do{
                 let users = try self.database.prepare(self.groupNamesTable)
+                var flag_check = 0
                 for user in users {
                     print("Name: \(user[self.gColumn])")
                     if(groupTextField.text! == user[self.gColumn]){
+                        flag_check = 1
+                    }
+                }
+                if(flag_check==1){
                         let alertController = UIAlertController(title: "Oops", message: "Group already exists", preferredStyle: .alert)
                         
                         // Create the actions
@@ -108,10 +128,10 @@ class GroupViewController: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                     else{
+                        print(groupTextField.text!)
                         nextViewController.makeTable(groupName: groupTextField.text!)
                         self.present(nextViewController, animated: true, completion: nil)
                     }
-                }
             }
             catch{
                 print(error)
