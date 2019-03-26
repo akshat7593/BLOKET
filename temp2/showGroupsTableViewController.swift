@@ -9,8 +9,8 @@
 import UIKit
 import SQLite
 class showGroupsTableViewController: UIViewController {
-    var database: Connection!
-    
+    var database1: Connection!
+    var database2: Connection!
     let usersTable = Table("GroupNameTable")
     let names = Expression<String>("names")
     
@@ -30,7 +30,7 @@ class showGroupsTableViewController: UIViewController {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
-            self.database = database
+            self.database1 = database
         } catch {
             print(error)
         }
@@ -38,7 +38,7 @@ class showGroupsTableViewController: UIViewController {
         
         do {
             print("two")
-            let users = try self.database.prepare(self.usersTable)
+            let users = try self.database1.prepare(self.usersTable)
             for user in users {
                 //print("userNumber: \(user[self.number])")
                 
@@ -48,8 +48,11 @@ class showGroupsTableViewController: UIViewController {
                 edit.setTitle("Edit", for: .normal)
                 
                 let switchBtn = UISwitch()
+                let del = UIButton()
+                del.setTitle("Delete", for: .normal)
+                
                 switchBtn.setOn(false, animated: true)
-                groupDataModel.append(groupNamesModal(name: name,edit:edit, switchBtn:switchBtn))
+                groupDataModel.append(groupNamesModal(name: name,edit:edit, switchBtn:switchBtn,delBtn:del))
             }
             //print(blacklistData)
             
@@ -76,19 +79,19 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         return groupDataModel.count
     }
     
-    func fetchGroupContacts(tablename: String){
-        do {
-            //print("first")
-            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
-            let database = try Connection(fileUrl.path)
-            self.database = database
-        } catch {
-            print(error)
-        }
-        
-        
-    }
+//    func fetchGroupContacts(tablename: String){
+//        do {
+//            //print("first")
+//            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//            let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
+//            let database = try Connection(fileUrl.path)
+//            self.database = database
+//        } catch {
+//            print(error)
+//        }
+//
+//
+//    }
     
     @objc func edit_group(sender:UIButton){
         print("edit")
@@ -111,6 +114,48 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         
         
     }
+    
+    @objc func delete_group(sender:UIButton){
+        print("delete")
+        
+
+        print(sender.accessibilityIdentifier!)
+        //print(sender.currentTitle!)
+        
+        print("DELETE TAPPED")
+        guard let groupname = sender.accessibilityIdentifier
+            //let userId = Int(userIdString)
+            else { return }
+        print(groupname)
+        
+        let user = self.usersTable.filter(self.names == groupname)
+        let deleteGroup = user.delete()
+        do {
+            try self.database1.run(deleteGroup)
+        } catch {
+            print(error)
+        }
+        
+        do {
+            print("first")
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent(groupname).appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database2 = database
+        } catch {
+            print(error)
+        }
+        let user2 = self.groupTable
+        let deletetable = user2.drop(ifExists: true)
+        do {
+            try self.database2.run(deletetable)
+        } catch {
+            print(error)
+        }
+        //self.tableView.reloadData()
+        self.viewDidLoad()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         print("inside tableview function")
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupTableViewCell", for: indexPath) as! groupTableViewCell
@@ -123,6 +168,11 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         cell.edit.accessibilityIdentifier=cell.name.text
         //print(cell.delete.accessibilityIdentifier!)
         cell.edit.addTarget(self, action:#selector(edit_group), for: .touchUpInside)
+        
+        cell.delBtn.setTitle("Delete", for: .normal)
+        cell.delBtn.accessibilityIdentifier=cell.name.text
+        //print(cell.delete.accessibilityIdentifier!)
+        cell.delBtn.addTarget(self, action:#selector(delete_group), for: .touchUpInside)
         
         cell.switchBtn.setOn(false, animated: true)
         

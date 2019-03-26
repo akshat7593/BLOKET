@@ -12,6 +12,7 @@ class groupTableViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     
+    @IBOutlet weak var delBtn: UIButton!
     @IBOutlet weak var switchBtn: UISwitch!
     @IBOutlet weak var edit: UIButton!
     override func awakeFromNib() {

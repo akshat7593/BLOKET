@@ -23,10 +23,9 @@ class contactsTableViewController: UITableViewController {
     var blockarray = [String]()
     
 //    override func viewWillAppear(_ animated: Bool) {
-//        print("viewWillAppear")
-//        blockarray.removeAll()
+//        print("viwWillAppear")
 //        self.tableView.reloadData()
-//        self.viewDidLoad()
+//        //self.viewDidLoad()
 //    }
     
     func someMethodIWantToCallInsert(cell: UITableViewCell) {
@@ -116,15 +115,14 @@ class contactsTableViewController: UITableViewController {
         print("abc")
         let store = CNContactStore()
         
-        store.requestAccess(for: .contacts) { (granted, err) in
-            if let err=err{
-                print("Failed to request access",err)
-                return
-            }
-            
-            if granted{
+//        store.requestAccess(for: .contacts) { (granted, err) in
+//            if let err=err{
+//                print("Failed to request access",err)
+//                return
+//            }
+//
+//            if granted{
                 print("Access granted")
-                
                 let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 
@@ -144,17 +142,19 @@ class contactsTableViewController: UITableViewController {
                     
                     let names = ExpandableNames(isExpanded: true, names: self.favoritableContacts)
                     self.twoDimensionalArray = [names]
-                    
+                    print("------aceess cobereddddd--------")
+                    //self.viewDidLoad()
+                    //self.tableView.reloadData()
                 }
                 catch let err{
                     print("Failed to enumerate contacts:",err)
                 }
                 
-            }
-            else{
-                print("Access Denied")
-            }
-        }
+//            }
+//            else{
+//                print("Access Denied")
+//            }
+//        }
     }
     
     
@@ -163,9 +163,6 @@ class contactsTableViewController: UITableViewController {
         super.viewDidLoad()
         print("contactTableView viewDidload")
         fetchContacts()
-        
-
-        
         navigationItem.title = "Contacts"
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -258,7 +255,7 @@ class contactsTableViewController: UITableViewController {
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
         cell.detailTextLabel?.text = favoritableContact.contact.phoneNumbers.first?.value.stringValue
-        print("2 new")
+        //print("2 new")
         
         //cell.accessoryView?.tintColor = favoritableContact.hasFavorited ? UIColor.red : .lightGray
         

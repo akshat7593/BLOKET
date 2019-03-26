@@ -16,8 +16,7 @@ class ContactCell: UITableViewCell {
     let usersTable = Table("blocknumbers")
     let number = Expression<String>("number")
 
-
-    @objc private func setButtonOn(num: String)-> Bool{
+    @objc public func setButtonOn(num: String)-> Bool{
         var flag = 0
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)

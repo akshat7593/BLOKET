@@ -608,15 +608,21 @@
                                                     <rect key="frame" x="276" y="14" width="30" height="30"/>
                                                     <state key="normal" title="Edit"/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0E-yw-y0G">
+                                                    <rect key="frame" x="211" y="14" width="45" height="30"/>
+                                                    <state key="normal" title="Delete"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="UYf-Nu-cvv" secondAttribute="trailing" constant="5" id="8yw-bf-6Ih"/>
                                                 <constraint firstItem="UYf-Nu-cvv" firstAttribute="leading" secondItem="J3C-5b-rQf" secondAttribute="trailing" constant="15" id="9hG-Qq-LUs"/>
+                                                <constraint firstItem="J3C-5b-rQf" firstAttribute="leading" secondItem="X0E-yw-y0G" secondAttribute="trailing" constant="20" id="Nyv-c4-Tp4"/>
                                                 <constraint firstItem="yZA-J6-JZS" firstAttribute="leading" secondItem="jEd-qt-Ydx" secondAttribute="leading" constant="5" id="TtM-42-ZYf"/>
                                                 <constraint firstItem="yZA-J6-JZS" firstAttribute="leading" secondItem="jEd-qt-Ydx" secondAttribute="leading" constant="5" id="yfT-Ku-2Vq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="delBtn" destination="X0E-yw-y0G" id="qMX-jd-kt1"/>
                                             <outlet property="edit" destination="J3C-5b-rQf" id="sHX-Tj-Zpv"/>
                                             <outlet property="name" destination="yZA-J6-JZS" id="fQ6-Jc-OiO"/>
                                             <outlet property="switchBtn" destination="UYf-Nu-cvv" id="HDK-Yg-fMB"/>

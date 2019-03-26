@@ -15,6 +15,7 @@ class BlockedNumberDisplay: UIViewController {
     let usersTable = Table("blocknumbers")
     let number = Expression<String>("number")
     
+
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -92,16 +93,10 @@ extension BlockedNumberDisplay: UITableViewDelegate, UITableViewDataSource{
         } catch {
             print(error)
         }
+
         self.tableView.reloadData()
         self.viewDidLoad()
-        //let obj = fetchViewController()
-        //obj.tableView.reloadData()
-        //obj.viewDidLoad()
-        //obj.tableView.reloadData()
-        //self.tableView.reloadData()
-        //self.viewDidLoad()
-        //alert.addAction(action)
-        //present(alert, animated: true, completion: nil)
+        
         
         
         
