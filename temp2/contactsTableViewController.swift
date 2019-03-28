@@ -10,8 +10,9 @@ import UIKit
 import Contacts
 import CoreData
 import SQLite
+
 class contactsTableViewController: UITableViewController {
-    
+    var class_block = Block_logic()
     var database: Connection!
     var favoritableContacts = [FavoritableContact]()
     var twoDimensionalArray = [ExpandableNames]()
@@ -168,6 +169,7 @@ class contactsTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(ContactCell.self, forCellReuseIdentifier: cellId)
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -198,7 +200,7 @@ class contactsTableViewController: UITableViewController {
         //adding blocked numbers in database
         for num in blockarray{
             //print(type(of: num))
-            var insertUser = self.blockTable.insert(self.number <- num)
+            let insertUser = self.blockTable.insert(self.number <- num)
             //print("teste")
             //print(insertUser)
             do {
@@ -209,6 +211,7 @@ class contactsTableViewController: UITableViewController {
             }
         }
         
+        class_block.block()
         //displaying blocked numbers
         do{
             let users = try self.database.prepare(self.blockTable)
@@ -233,7 +236,7 @@ class contactsTableViewController: UITableViewController {
         return twoDimensionalArray.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableVriew: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !twoDimensionalArray[section].isExpanded {
             return 0
         }
@@ -245,25 +248,18 @@ class contactsTableViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactCell
         
         let cell = ContactCell(style: .subtitle, reuseIdentifier: cellId)
+        //error index out of range
+        
         cell.temp(cN : favoritableContacts[index].contact.phoneNumbers[0].value.stringValue)
         index+=1
-        //print(index)
         cell.link = self
         let favoritableContact = twoDimensionalArray[indexPath.section].names[indexPath.row]
-        //print(favoritableContacts[0].contact.phoneNumbers[0].value.stringValue)
+        
         cell.textLabel?.text = favoritableContact.contact.givenName + " " + favoritableContact.contact.familyName
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
         cell.detailTextLabel?.text = favoritableContact.contact.phoneNumbers.first?.value.stringValue
-        //print("2 new")
-        
-        //cell.accessoryView?.tintColor = favoritableContact.hasFavorited ? UIColor.red : .lightGray
-        
-        
-        
-//        if showIndexPaths {
-//            //cell.textLabel?.text = "\(favoritableContact.name)   Section:\(indexPath.section) Row:\(indexPath.row)"
-//        }
+
         
         return cell
     }

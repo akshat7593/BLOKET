@@ -14,6 +14,7 @@ class GroupViewController: UIViewController {
         var database: Connection!
         var groupNamesTable = Table("GroupNameTable")
         var gColumn = Expression<String>("names")
+        //var state_switch = Expression<String>("state")
     
     override func viewDidLoad() {
         super.viewDidLoad()

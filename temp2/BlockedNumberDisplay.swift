@@ -14,7 +14,7 @@ class BlockedNumberDisplay: UIViewController {
     
     let usersTable = Table("blocknumbers")
     let number = Expression<String>("number")
-    
+    //let cellId = "cellId123127"
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -54,12 +54,14 @@ class BlockedNumberDisplay: UIViewController {
         } catch {
             print(error)
         }
+        
        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
         self.viewDidLoad()
     }
+    
     
     
 }

@@ -37,6 +37,7 @@
 		ACE93127221C70BB00229A27 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE93126221C70BB00229A27 /* DataModel.swift */; };
 		ACE93129221C711800229A27 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE93128221C711800229A27 /* TableViewCell.swift */; };
 		ACE9312B221C71E600229A27 /* fetchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9312A221C71E600229A27 /* fetchViewController.swift */; };
+		ACEE4F4A2249F8580017793E /* Block_logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE4F492249F8580017793E /* Block_logic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		ACE93126221C70BB00229A27 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		ACE93128221C711800229A27 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		ACE9312A221C71E600229A27 /* fetchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchViewController.swift; sourceTree = "<group>"; };
+		ACEE4F492249F8580017793E /* Block_logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_logic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,19 +248,20 @@
 			children = (
 				AC17D5F72213F6EC00DF9D3A /* temp2.entitlements */,
 				AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */,
+				AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */,
 				ACD65ACE21FEF01900CE19FE /* DialViewController.swift */,
 				ACE93126221C70BB00229A27 /* DataModel.swift */,
-				ACE93128221C711800229A27 /* TableViewCell.swift */,
 				ACE9312A221C71E600229A27 /* fetchViewController.swift */,
 				ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */,
 				ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */,
+				ACE93128221C711800229A27 /* TableViewCell.swift */,
+				ACEE4F492249F8580017793E /* Block_logic.swift */,
 				AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */,
 				ACD65AB221FED2CA00CE19FE /* Main.storyboard */,
 				ACD65AB521FED2CD00CE19FE /* Assets.xcassets */,
 				ACD65AB721FED2CD00CE19FE /* LaunchScreen.storyboard */,
 				AC17D5F52212846C00DF9D3A /* MsgViewController.swift */,
 				ACD65ABA21FED2CD00CE19FE /* Info.plist */,
-				AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */,
 				AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */,
 				AC04652022401104003BD775 /* GroupViewController.swift */,
 				AC04652222401A00003BD775 /* groupContactsTableViewController.swift */,
@@ -531,6 +534,7 @@
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
 				AC29CB362241329A00794C4E /* checkViewController.swift in Sources */,
 				AC29CB2A2241143800794C4E /* editGroupTableViewController.swift in Sources */,
+				ACEE4F4A2249F8580017793E /* Block_logic.swift in Sources */,
 				ACE93127221C70BB00229A27 /* DataModel.swift in Sources */,
 				ACE93129221C711800229A27 /* TableViewCell.swift in Sources */,
 				AC046527224034DA003BD775 /* showGroupsTableViewController.swift in Sources */,

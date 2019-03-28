@@ -9,8 +9,9 @@
 import Foundation
 import CallKit
 import SQLite
-
+import CoreData
 class CallDirectoryHandler: CXCallDirectoryProvider {
+    //var array1 : Array<Any> = []
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
         //------------------
@@ -24,10 +25,17 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //-----------------------
         print("check0")
         print("check0ii")
-        let defaults = UserDefaults.standard
-        //(suiteName: "group.tag.number")
-        let array = defaults.object(forKey: "block_number1") as? [String] ?? [String]()
-        print(array)
+//        let defaults = UserDefaults.standard
+//        //(suiteName: "group.tag.number")
+////        array1 = defaults.object(forKey: "block_array") as? [String] ?? [String]()
+////        print(array1)
+//        let array1 = defaults.object(forKey: "block_array") as? [String] ?? [String]()
+//        print(array1)
+//        let defaults = UserDefaults(suiteName: "group.tag.number")
+//        //(suiteName: "group.tag.number")
+//        var array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
+//        array.sort()
+//        print(array)
         // Check whether this is an "incremental" data request. If so, only provide the set of phone number blocking
         // and identification entries which have been added or removed since the last time this extension's data was loaded.
         // But the extension must still be prepared to provide the full set of data at any time, so add all blocking
@@ -52,8 +60,20 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // Retrieve all phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
         // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
         //
+        //print(array1)
         // Numbers must be provided in numerically ascending order.
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ +919872717155 ]
+        let defaults = UserDefaults(suiteName: "group.tag.number")
+        //(suiteName: "group.tag.number")
+        var array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
+        array.sort()
+        print(array)
+        var temp : Array<Int64> = []
+        for item in array {
+            let newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            temp.append(Int64(newString)!)
+        }
+        
+            let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = temp
         for phoneNumber in allPhoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
@@ -64,7 +84,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // Retrieve any changes to the set of phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
         // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
         //918460663919
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = [ +918460663919 ]
+        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = []
         for phoneNumber in phoneNumbersToAdd {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }

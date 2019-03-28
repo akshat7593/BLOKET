@@ -13,7 +13,7 @@ class showGroupsTableViewController: UIViewController {
     var database2: Connection!
     let usersTable = Table("GroupNameTable")
     let names = Expression<String>("names")
-    
+    let cellId1 = "cellId123125"
     var groupTable = Table("1")
     var groupName = Expression<String>("number")
   
@@ -24,6 +24,7 @@ class showGroupsTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupDataModel.removeAll()
+        //groupTableView.register(groupTableViewCell.self, forCellReuseIdentifier: cellId1)
         print("inside viewdidload")
         do {
             print("first")
@@ -47,24 +48,22 @@ class showGroupsTableViewController: UIViewController {
                 let edit = UIButton()
                 edit.setTitle("Edit", for: .normal)
                 
-                let switchBtn = UISwitch()
+                //let switchBtn = UISwitch()
                 let del = UIButton()
                 del.setTitle("Delete", for: .normal)
                 
-                switchBtn.setOn(false, animated: true)
-                groupDataModel.append(groupNamesModal(name: name,edit:edit, switchBtn:switchBtn,delBtn:del))
+                //switchBtn.setOn(false, animated: true)
+                groupDataModel.append(groupNamesModal(name: name,edit:edit,delBtn:del))
+                
             }
             //print(blacklistData)
             
         } catch {
             print(error)
         }
-        
-        
-        //navigationItem.title = "Contacts"
-        
-        
+     
     }
+    
     override func viewWillAppear(_ animated: Bool) {
        //self.tableView.reloadData()
         //self.viewDidLoad()
@@ -79,19 +78,6 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         return groupDataModel.count
     }
     
-//    func fetchGroupContacts(tablename: String){
-//        do {
-//            //print("first")
-//            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-//            let fileUrl = documentDirectory.appendingPathComponent("GroupNameTable").appendingPathExtension("sqlite3")
-//            let database = try Connection(fileUrl.path)
-//            self.database = database
-//        } catch {
-//            print(error)
-//        }
-//
-//
-//    }
     
     @objc func edit_group(sender:UIButton){
         print("edit")
@@ -110,10 +96,7 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         //self.tableView.reloadData()
         self.viewDidLoad()
         
-        
-        
-        
-    }
+        }
     
     @objc func delete_group(sender:UIButton){
         print("delete")
@@ -161,20 +144,26 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupTableViewCell", for: indexPath) as! groupTableViewCell
         //var number: String
         
+        //let cell = groupTableViewCell(style: .subtitle, reuseIdentifier: cellId1)
+        let groupname = groupDataModel[indexPath.row].name
+        print(groupname!)
+        cell.temp(cN : groupname)
+        cell.link = self
         
-        cell.name.text = groupDataModel[indexPath.row].name
         
+        cell.name.text = groupname
         cell.edit.setTitle("Edit", for: .normal)
         cell.edit.accessibilityIdentifier=cell.name.text
-        //print(cell.delete.accessibilityIdentifier!)
+     
         cell.edit.addTarget(self, action:#selector(edit_group), for: .touchUpInside)
         
         cell.delBtn.setTitle("Delete", for: .normal)
         cell.delBtn.accessibilityIdentifier=cell.name.text
-        //print(cell.delete.accessibilityIdentifier!)
+        
         cell.delBtn.addTarget(self, action:#selector(delete_group), for: .touchUpInside)
         
-        cell.switchBtn.setOn(false, animated: true)
+        //cell.switchBtn.setOn(false, animated: true)
+        //cell.switchBtn.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
         
         return cell
     }

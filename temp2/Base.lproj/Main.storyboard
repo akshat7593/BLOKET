@@ -579,7 +579,7 @@
         <!--Item-->
         <scene sceneID="Tus-Rr-Ox5">
             <objects>
-                <viewController id="oWx-Wb-HSh" customClass="showGroupsTableViewController" customModule="temp2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="showGroupsTableViewController" storyboardIdentifier="showGroupsTableViewController" id="oWx-Wb-HSh" customClass="showGroupsTableViewController" customModule="temp2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xXO-RE-4DN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -596,36 +596,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Jugaaaaaaaaaaaaaaad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZA-J6-JZS">
-                                                    <rect key="frame" x="5" y="19" width="173.5" height="21"/>
+                                                    <rect key="frame" x="10" y="19" width="173.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYf-Nu-cvv">
-                                                    <rect key="frame" x="321" y="14" width="51" height="31"/>
-                                                </switch>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3C-5b-rQf">
-                                                    <rect key="frame" x="276" y="14" width="30" height="30"/>
+                                                    <rect key="frame" x="290" y="14" width="30" height="30"/>
                                                     <state key="normal" title="Edit"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0E-yw-y0G">
-                                                    <rect key="frame" x="211" y="14" width="45" height="30"/>
+                                                    <rect key="frame" x="235" y="14" width="45" height="30"/>
                                                     <state key="normal" title="Delete"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="UYf-Nu-cvv" secondAttribute="trailing" constant="5" id="8yw-bf-6Ih"/>
-                                                <constraint firstItem="UYf-Nu-cvv" firstAttribute="leading" secondItem="J3C-5b-rQf" secondAttribute="trailing" constant="15" id="9hG-Qq-LUs"/>
-                                                <constraint firstItem="J3C-5b-rQf" firstAttribute="leading" secondItem="X0E-yw-y0G" secondAttribute="trailing" constant="20" id="Nyv-c4-Tp4"/>
-                                                <constraint firstItem="yZA-J6-JZS" firstAttribute="leading" secondItem="jEd-qt-Ydx" secondAttribute="leading" constant="5" id="TtM-42-ZYf"/>
-                                                <constraint firstItem="yZA-J6-JZS" firstAttribute="leading" secondItem="jEd-qt-Ydx" secondAttribute="leading" constant="5" id="yfT-Ku-2Vq"/>
+                                                <constraint firstItem="yZA-J6-JZS" firstAttribute="leading" secondItem="jEd-qt-Ydx" secondAttribute="leading" constant="10" id="2Nk-fH-ziw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="J3C-5b-rQf" secondAttribute="trailing" constant="40" id="HPe-f7-n6A"/>
+                                                <constraint firstItem="J3C-5b-rQf" firstAttribute="leading" secondItem="X0E-yw-y0G" secondAttribute="trailing" constant="10" id="xxt-ZU-Q4M"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="delBtn" destination="X0E-yw-y0G" id="qMX-jd-kt1"/>
                                             <outlet property="edit" destination="J3C-5b-rQf" id="sHX-Tj-Zpv"/>
                                             <outlet property="name" destination="yZA-J6-JZS" id="fQ6-Jc-OiO"/>
-                                            <outlet property="switchBtn" destination="UYf-Nu-cvv" id="HDK-Yg-fMB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -12,6 +12,6 @@ import UIKit
 struct groupNamesModal{
     let name:String?
     let edit:UIButton?
-    let switchBtn:UISwitch?
+    //let switchBtn:UISwitch?
     let delBtn:UIButton?
 }
