@@ -16,7 +16,7 @@ class contactsTableViewController: UITableViewController {
     var database: Connection!
     var favoritableContacts = [FavoritableContact]()
     var twoDimensionalArray = [ExpandableNames]()
-    var index : Int = 0
+    //var index : Int = 0
     let blockTable = Table("blocknumbers")
     let number = Expression<String>("number")
     
@@ -250,11 +250,14 @@ class contactsTableViewController: UITableViewController {
         let cell = ContactCell(style: .subtitle, reuseIdentifier: cellId)
         //error index out of range
         
-        cell.temp(cN : favoritableContacts[index].contact.phoneNumbers[0].value.stringValue)
-        index+=1
+        
+        //index+=1
         cell.link = self
         let favoritableContact = twoDimensionalArray[indexPath.section].names[indexPath.row]
-        
+        print("0000********00000000")
+        print(favoritableContact.contact.phoneNumbers[0].value.stringValue)
+        cell.temp(cN : favoritableContact.contact.phoneNumbers[0].value.stringValue)
+        print("0000********00000000")
         cell.textLabel?.text = favoritableContact.contact.givenName + " " + favoritableContact.contact.familyName
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         

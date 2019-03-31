@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 import SQLite
+import CallKit
+
 class Block_logic{
     var database: Connection!
     
@@ -42,16 +44,25 @@ class Block_logic{
         catch{
             print(error)
         }
+        print("**************")
         print(blockarray)
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
         //defaults.set(array, forKey: "block_array")
         defaults!.setValue(blockarray, forKey: "block_array")
         print(array)
+        defaults!.setValue(array, forKey: "block_array_old")
         print("0----------------00------")
         let array1 = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
         print(array1)
+        print("-------------------------------------")
+        let array2 = defaults!.object(forKey: "block_array_old") as? [String] ?? [String]()
         print("akshat")
+        print(array2)
+        
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
+            print("akshat"+error.localizedDescription)
+            }})
         
     }
 }

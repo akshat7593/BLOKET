@@ -15,7 +15,7 @@ class groupContactsTableViewController: UITableViewController {
     var database1: Connection!
     var database2: Connection!
     var favoritableContacts = [FavoritableContact]()
-    var index : Int = 0
+    //var index : Int = 0
    
     let cellId = "cellId123"
     
@@ -291,12 +291,13 @@ class groupContactsTableViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactCell
         
         let cell = groupContactCell(style: .subtitle, reuseIdentifier: cellId)
-        cell.temp(cN : favoritableContacts[index].contact.phoneNumbers[0].value.stringValue)
-        index+=1
+        //cell.temp(cN : favoritableContacts[index].contact.phoneNumbers[0].value.stringValue)
+        //index+=1
         //print(index)
         cell.link = self
         let favoritableContact = twoDimensionalArray[indexPath.section].names[indexPath.row]
         //print(favoritableContacts[0].contact.phoneNumbers[0].value.stringValue)
+        cell.temp(cN : favoritableContact.contact.phoneNumbers[0].value.stringValue)
         cell.textLabel?.text = favoritableContact.contact.givenName + " " + favoritableContact.contact.familyName
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         

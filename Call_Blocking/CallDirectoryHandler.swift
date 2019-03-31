@@ -24,7 +24,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         
         //-----------------------
         print("check0")
-        print("check0ii")
+        //print("check0ii")
 //        let defaults = UserDefaults.standard
 //        //(suiteName: "group.tag.number")
 ////        array1 = defaults.object(forKey: "block_array") as? [String] ?? [String]()
@@ -72,6 +72,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             let newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
             temp.append(Int64(newString)!)
         }
+        print(temp)
         
             let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = temp
         for phoneNumber in allPhoneNumbers {
@@ -84,15 +85,47 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // Retrieve any changes to the set of phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
         // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
         //918460663919
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = []
+        
+        //removing old value from the call directory extension
+        let defaults = UserDefaults(suiteName: "group.tag.number")
+        //(suiteName: "group.tag.number")
+        var array = defaults!.object(forKey: "block_array_old") as? [String] ?? [String]()
+        array.sort()
+        //print(array)
+        var temp : Array<Int64> = []
+        for item in array {
+            let newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            temp.append(Int64(newString)!)
+        }
+        print("Remove---------------------")
+        print(temp)
+        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = temp
+        for phoneNumber in phoneNumbersToRemove {
+            context.removeBlockingEntry(withPhoneNumber: phoneNumber)
+        }
+        
+        //Adding new Numbers
+        
+        var array_new = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
+        array_new.sort()
+        print(array_new)
+        var temp_new : Array<Int64> = []
+        for item in array_new {
+            var newString_new = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString_new.count==10){
+                newString_new = "91"+newString_new
+            }
+            temp_new.append(Int64(newString_new)!)
+        }
+        print(temp_new)
+        print("add----------------------------")
+        
+        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = temp_new
         for phoneNumber in phoneNumbersToAdd {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
 
-        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = [ +918460663919 ]
-        for phoneNumber in phoneNumbersToRemove {
-            context.removeBlockingEntry(withPhoneNumber: phoneNumber)
-        }
+       
         print("check2")
 
         // Record the most-recently loaded set of blocking entries in data store for the next incremental load...
