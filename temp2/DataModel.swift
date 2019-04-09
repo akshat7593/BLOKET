@@ -11,5 +11,6 @@ import UIKit
 
 struct blacklistModal{
     let number:String?
+    let name:String?
     let delete:UIButton?
 }

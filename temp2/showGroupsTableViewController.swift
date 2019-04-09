@@ -71,11 +71,29 @@ class showGroupsTableViewController: UIViewController {
 }
 
 extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSource{
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let button = UIButton(type: .system)
+        button.setTitle("Done", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
+        //button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+        
+        button.tag = section
+        
+        return button
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         print("count of table view")
         //self.viewDidLoad()
         print(groupDataModel.count)
+        self.viewDidLoad()
         return groupDataModel.count
+        
     }
     
     
@@ -94,7 +112,7 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         
         
         //self.tableView.reloadData()
-        self.viewDidLoad()
+        //self.viewDidLoad()
         
         }
     
@@ -135,7 +153,7 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         } catch {
             print(error)
         }
-        //self.tableView.reloadData()
+        self.groupTableView.reloadData()
         self.viewDidLoad()
     }
     
@@ -147,17 +165,22 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         //let cell = groupTableViewCell(style: .subtitle, reuseIdentifier: cellId1)
         let groupname = groupDataModel[indexPath.row].name
         print(groupname!)
-        cell.temp(cN : groupname)
+        cell.temp(groupName:groupname)
         cell.link = self
         
         
         cell.name.text = groupname
+        cell.name.textColor = .black
+        cell.name?.font = UIFont.boldSystemFont(ofSize: 15)
+        
         cell.edit.setTitle("Edit", for: .normal)
+        //cell.edit.setTitleShadowColor(.green, for: .normal)
         cell.edit.accessibilityIdentifier=cell.name.text
      
         cell.edit.addTarget(self, action:#selector(edit_group), for: .touchUpInside)
         
         cell.delBtn.setTitle("Delete", for: .normal)
+        cell.delBtn.setTitleColor(.red, for: .normal)
         cell.delBtn.accessibilityIdentifier=cell.name.text
         
         cell.delBtn.addTarget(self, action:#selector(delete_group), for: .touchUpInside)

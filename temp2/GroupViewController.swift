@@ -14,6 +14,7 @@ class GroupViewController: UIViewController {
         var database: Connection!
         var groupNamesTable = Table("GroupNameTable")
         var gColumn = Expression<String>("names")
+        var oColumn = Expression<Bool>("onoff")
         //var state_switch = Expression<String>("state")
     
     override func viewDidLoad() {
@@ -89,6 +90,7 @@ class GroupViewController: UIViewController {
         else{
             let gTable = self.groupNamesTable.create { (table) in
                 table.column(self.gColumn, primaryKey: true)
+                table.column(self.oColumn)
             }
             
             do {

@@ -22,6 +22,7 @@ class groupContactsTableViewController: UITableViewController {
     //trying to make table of all group names
     var groupNamesTable = Table("GroupNameTable")
     var gColumn = Expression<String>("names")
+    var oColumn = Expression<Bool>("onoff")
     
     var tableName = ""
 
@@ -235,7 +236,7 @@ class groupContactsTableViewController: UITableViewController {
         }
         
         //adding table name to groupNamesTable
-        let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName)
+        let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName,self.oColumn <- false)
         do {
             try self.database2.run(insertTableName)
             print("Table name INSERTED ")

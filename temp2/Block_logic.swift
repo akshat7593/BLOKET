@@ -45,7 +45,25 @@ class Block_logic{
             print(error)
         }
         print("**************")
-        print(blockarray)
+        //print(blockarray)
+        
+        //Checking regex
+        var temp : Array<Int64> = []
+        for item in blockarray {
+            var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString[newString.startIndex]=="0"){
+                newString.remove(at: newString.startIndex)
+            }
+            if(newString.count==10){
+                newString="91"+newString
+            }
+            if(newString.count==12){
+            temp.append(Int64(newString)!)
+            }
+        }
+        print(temp)
+        //ends
+        
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
         //defaults.set(array, forKey: "block_array")

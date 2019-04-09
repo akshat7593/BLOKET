@@ -14,9 +14,11 @@ class BlockedNumberDisplay: UIViewController {
     
     let usersTable = Table("blocknumbers")
     let number = Expression<String>("number")
+    
+    let name = Expression<String>("name")
     //let cellId = "cellId123127"
 
-    
+    let b_logic = Block_logic()
     @IBOutlet weak var tableView: UITableView!
     
     var blacklistData:[blacklistModal] = []
@@ -42,12 +44,12 @@ class BlockedNumberDisplay: UIViewController {
             let users = try self.database.prepare(self.usersTable)
             for user in users {
                 print("userNumber: \(user[self.number])")
-
+                let name = user[self.name]
                 let number = user[self.number]
 
                 let delete = UIButton()
                 delete.setTitle("X", for: .normal)
-                blacklistData.append(blacklistModal(number: number,delete:delete))
+                blacklistData.append(blacklistModal(number: number,name:name,delete:delete))
             }
             //print(blacklistData)
 
@@ -66,7 +68,20 @@ class BlockedNumberDisplay: UIViewController {
     
 }
 
-
+//override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//    let button = UIButton(type: .system)
+//    button.setTitle("Block", for: .normal)
+//    button.setTitleColor(.white, for: .normal)
+//    button.backgroundColor = .black
+//    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+//
+//    //button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+//
+//    button.tag = section
+//    
+//    return button
+//}
 
 extension BlockedNumberDisplay: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -99,7 +114,7 @@ extension BlockedNumberDisplay: UITableViewDelegate, UITableViewDataSource{
         self.tableView.reloadData()
         self.viewDidLoad()
         
-        
+        b_logic.block()
         
         
     }
@@ -110,7 +125,7 @@ extension BlockedNumberDisplay: UITableViewDelegate, UITableViewDataSource{
         
         
         cell.number.text = blacklistData[indexPath.row].number
-
+        cell.name.text = blacklistData[indexPath.row].name
         cell.delete.setTitle("X", for: .normal)
         cell.delete.accessibilityIdentifier=cell.number.text
             //print(cell.delete.accessibilityIdentifier!)

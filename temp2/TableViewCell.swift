@@ -14,6 +14,8 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var delete: UIButton!
     
+    @IBOutlet weak var name: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
