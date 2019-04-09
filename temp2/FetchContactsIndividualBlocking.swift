@@ -34,14 +34,27 @@ class FetchContactsIndividualBlocking: UITableViewController {
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         
         let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
-        print(contact)
+        var number1 = ""
+        if(contact.contact.phoneNumbers.count>=1)
+        { number1=contact.contact.phoneNumbers[0].value.stringValue}
+        else{
+             number1=""
+        }
         
-        let hasFavorited = contact.hasFavorited
-        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
+        //calling starts
+        let url:NSURL = NSURL(string: "telprompt://\(number1)")!
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        print(url)
         
-        //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
+        //ends
         
-        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
+        
+//        let hasFavorited = contact.hasFavorited
+//        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
+//
+//        //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
+//
+//        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
     }
     
     var twoDimensionalArray = [ExpandableNames]()
@@ -212,6 +225,8 @@ class FetchContactsIndividualBlocking: UITableViewController {
         cell.detailTextLabel?.text = favoritableContact.contact.phoneNumbers.first?.value.stringValue
         
         cell.accessoryView?.tintColor = favoritableContact.hasFavorited ? UIColor.red : .lightGray
+        
+        
         
         if showIndexPaths {
             //            cell.textLabel?.text = "\(favoritableContact.name)   Section:\(indexPath.section) Row:\(indexPath.row)"

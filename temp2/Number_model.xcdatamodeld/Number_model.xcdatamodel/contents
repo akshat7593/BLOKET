@@ -3,8 +3,9 @@
     <entity name="Block" representedClassName="Block" syncable="YES" codeGenerationType="class">
         <attribute name="block_array" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="block_array_old" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grp_block_array" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Block" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Block" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

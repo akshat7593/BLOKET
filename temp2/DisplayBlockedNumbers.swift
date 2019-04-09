@@ -21,7 +21,7 @@ class DisplayBlockedNumbers: UITableViewController {
     let name = Expression<String>("name")
     
     let cellId = "cellId123123"
-    
+    let b_logic = Block_logic()
     var blacklistData:[blacklistModal] = []
     //var blockednumbers = [String]()
     //var blockedname = [String]()
@@ -48,6 +48,7 @@ class DisplayBlockedNumbers: UITableViewController {
 
         self.tableView.reloadData()
         self.viewDidLoad()
+        b_logic.block()
     }
     
     

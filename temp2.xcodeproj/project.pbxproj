@@ -28,6 +28,8 @@
 		ACA0C7A0225BCACA005CF945 /* DisplayBlockedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C79F225BCACA005CF945 /* DisplayBlockedNumbers.swift */; };
 		ACA0C7A2225BCE93005CF945 /* BlockedContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7A1225BCE93005CF945 /* BlockedContactCell.swift */; };
 		ACA0C7A4225BCF33005CF945 /* BlockedExpandableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7A3225BCF33005CF945 /* BlockedExpandableNames.swift */; };
+		ACA0C7AC225D125B005CF945 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */; };
+		ACA0C7B0225D125B005CF945 /* Call_grp_blocking.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
 		ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */; };
 		ACD65AB421FED2CA00CE19FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB221FED2CA00CE19FE /* Main.storyboard */; };
@@ -52,6 +54,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AC9E2547220F12F9005CA487;
 			remoteInfo = Call_Blocking;
+		};
+		ACA0C7AE225D125B005CF945 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACD65AA121FED2CA00CE19FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACA0C7A8225D125B005CF945;
+			remoteInfo = Call_grp_blocking;
 		};
 		ACD65AC021FED2CD00CE19FE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -126,6 +135,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				AC9E254F220F12F9005CA487 /* Call_Blocking.appex in Embed App Extensions */,
+				ACA0C7B0225D125B005CF945 /* Call_grp_blocking.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +178,9 @@
 		ACA0C79F225BCACA005CF945 /* DisplayBlockedNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayBlockedNumbers.swift; sourceTree = "<group>"; };
 		ACA0C7A1225BCE93005CF945 /* BlockedContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedContactCell.swift; sourceTree = "<group>"; };
 		ACA0C7A3225BCF33005CF945 /* BlockedExpandableNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedExpandableNames.swift; sourceTree = "<group>"; };
+		ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_grp_blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
+		ACA0C7AD225D125B005CF945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedNumberDisplay.swift; sourceTree = "<group>"; };
@@ -192,6 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACE93110221C04B100229A27 /* SQLite.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACA0C7A6225D125B005CF945 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,12 +251,22 @@
 			path = Call_Blocking;
 			sourceTree = "<group>";
 		};
+		ACA0C7AA225D125B005CF945 /* Call_grp_blocking */ = {
+			isa = PBXGroup;
+			children = (
+				ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */,
+				ACA0C7AD225D125B005CF945 /* Info.plist */,
+			);
+			path = Call_grp_blocking;
+			sourceTree = "<group>";
+		};
 		ACD65AA021FED2CA00CE19FE = {
 			isa = PBXGroup;
 			children = (
 				ACD65AAB21FED2CA00CE19FE /* temp2 */,
 				ACD65AC221FED2CD00CE19FE /* temp2Tests */,
 				AC9E2549220F12F9005CA487 /* Call_Blocking */,
+				ACA0C7AA225D125B005CF945 /* Call_grp_blocking */,
 				ACD65AAA21FED2CA00CE19FE /* Products */,
 				ACE930F2221BDE4E00229A27 /* SQLite.xcodeproj */,
 				AC7B37C2221ACD0100B137DD /* Frameworks */,
@@ -249,6 +279,7 @@
 				ACD65AA921FED2CA00CE19FE /* temp2.app */,
 				ACD65ABF21FED2CD00CE19FE /* temp2Tests.xctest */,
 				AC9E2548220F12F9005CA487 /* Call_Blocking.appex */,
+				ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -334,6 +365,23 @@
 			productReference = AC9E2548220F12F9005CA487 /* Call_Blocking.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ACA0C7A8225D125B005CF945 /* Call_grp_blocking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACA0C7B1225D125B005CF945 /* Build configuration list for PBXNativeTarget "Call_grp_blocking" */;
+			buildPhases = (
+				ACA0C7A5225D125B005CF945 /* Sources */,
+				ACA0C7A6225D125B005CF945 /* Frameworks */,
+				ACA0C7A7225D125B005CF945 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Call_grp_blocking;
+			productName = Call_grp_blocking;
+			productReference = ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		ACD65AA821FED2CA00CE19FE /* temp2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "temp2" */;
@@ -349,6 +397,7 @@
 			dependencies = (
 				AC9E254E220F12F9005CA487 /* PBXTargetDependency */,
 				ACE9310E221BDE8500229A27 /* PBXTargetDependency */,
+				ACA0C7AF225D125B005CF945 /* PBXTargetDependency */,
 			);
 			name = temp2;
 			productName = temp2;
@@ -390,6 +439,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					ACA0C7A8225D125B005CF945 = {
+						CreatedOnToolsVersion = 10.1;
 					};
 					ACD65AA821FED2CA00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
@@ -442,6 +494,7 @@
 				ACD65AA821FED2CA00CE19FE /* temp2 */,
 				ACD65ABE21FED2CD00CE19FE /* temp2Tests */,
 				AC9E2547220F12F9005CA487 /* Call_Blocking */,
+				ACA0C7A8225D125B005CF945 /* Call_grp_blocking */,
 			);
 		};
 /* End PBXProject section */
@@ -506,6 +559,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ACA0C7A7225D125B005CF945 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ACD65AA721FED2CA00CE19FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +591,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9E254B220F12F9005CA487 /* CallDirectoryHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACA0C7A5225D125B005CF945 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACA0C7AC225D125B005CF945 /* CallDirectoryHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +650,11 @@
 			isa = PBXTargetDependency;
 			target = AC9E2547220F12F9005CA487 /* Call_Blocking */;
 			targetProxy = AC9E254D220F12F9005CA487 /* PBXContainerItemProxy */;
+		};
+		ACA0C7AF225D125B005CF945 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACA0C7A8225D125B005CF945 /* Call_grp_blocking */;
+			targetProxy = ACA0C7AE225D125B005CF945 /* PBXContainerItemProxy */;
 		};
 		ACD65AC121FED2CD00CE19FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -650,6 +723,46 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.temp2.Call-Blocking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ACA0C7B2225D125B005CF945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
+				INFOPLIST_FILE = Call_grp_blocking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.temp2.Call-grp-blocking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ACA0C7B3225D125B005CF945 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4624FBVQVB;
+				INFOPLIST_FILE = Call_grp_blocking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.temp2.Call-grp-blocking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -863,6 +976,15 @@
 			buildConfigurations = (
 				AC9E2551220F12F9005CA487 /* Debug */,
 				AC9E2552220F12F9005CA487 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACA0C7B1225D125B005CF945 /* Build configuration list for PBXNativeTarget "Call_grp_blocking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACA0C7B2225D125B005CF945 /* Debug */,
+				ACA0C7B3225D125B005CF945 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

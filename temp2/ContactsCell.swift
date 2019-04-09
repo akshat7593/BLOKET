@@ -19,7 +19,8 @@ class ContactsCell: UITableViewCell {
         
         // kind of cheat and use a hack
         let starButton = UIButton(type: .system)
-        starButton.setImage(#imageLiteral(resourceName: "fav_star"), for: .normal)
+        //starButton.setImage(#imageLiteral(resourceName: "fav_star"), for: .normal)
+        starButton.setTitle("call", for: .normal)
         starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         
         starButton.tintColor = .red
@@ -29,7 +30,7 @@ class ContactsCell: UITableViewCell {
     }
     
     @objc private func handleMarkAsFavorite() {
-        //        print("Marking as favorite")
+        print("Marking as favorite")
         link?.someMethodIWantToCall(cell: self)
     }
     

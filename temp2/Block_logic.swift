@@ -16,7 +16,7 @@ class Block_logic{
     
     let blockTable = Table("blocknumbers")
     let column = Expression<String>("number")
-    
+    //let grp_table = showGroupsTableViewController()
     var blockarray = [String]()
     func block() {
         
@@ -83,4 +83,15 @@ class Block_logic{
             }})
         
     }
+    //Logic for group Blocking
+    func grp_block(){
+        print("............check grp blocking..........")
+        let defaults = UserDefaults(suiteName: "group.tag.number")
+        let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-grp-blocking", completionHandler: {(error) -> Void in if let error = error {
+            print("akshat"+error.localizedDescription)
+            }})
+        print(array)
+    }
+    //ends
 }
