@@ -48,6 +48,8 @@
 		ACE93129221C711800229A27 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE93128221C711800229A27 /* TableViewCell.swift */; };
 		ACE9312B221C71E600229A27 /* fetchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9312A221C71E600229A27 /* fetchViewController.swift */; };
 		ACEE4F4A2249F8580017793E /* Block_logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE4F492249F8580017793E /* Block_logic.swift */; };
+		ACF090E1225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */; };
+		ACF090E3225DBC11001DFAC1 /* AddingnewGrpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +206,8 @@
 		ACE9312A221C71E600229A27 /* fetchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchViewController.swift; sourceTree = "<group>"; };
 		ACEE4F492249F8580017793E /* Block_logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_logic.swift; sourceTree = "<group>"; };
 		ACF090DF225DB5BC001DFAC1 /* Call_grp_blocking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Call_grp_blocking.entitlements; sourceTree = "<group>"; };
+		ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewGrpTableViewController.swift; sourceTree = "<group>"; };
+		ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingnewGrpCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +333,8 @@
 				AC29CB352241329A00794C4E /* checkViewController.swift */,
 				ACA0C795225B6217005CF945 /* FetchContactsIndividualBlocking.swift */,
 				ACA0C79D225B62B9005CF945 /* ContactsCell.swift */,
+				ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */,
+				ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */,
 			);
 			path = temp2;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				ACA0C7B9225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift in Sources */,
 				AC04652522401AD0003BD775 /* groupContactCell.swift in Sources */,
 				AC04652B2240E79C003BD775 /* groupDataModel.swift in Sources */,
+				ACF090E3225DBC11001DFAC1 /* AddingnewGrpCell.swift in Sources */,
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
 				AC29CB362241329A00794C4E /* checkViewController.swift in Sources */,
 				ACA0C7B7225D93BE005CF945 /* AddMoreContactsController.swift in Sources */,
@@ -643,6 +650,7 @@
 				ACE93127221C70BB00229A27 /* DataModel.swift in Sources */,
 				ACE93129221C711800229A27 /* TableViewCell.swift in Sources */,
 				AC046527224034DA003BD775 /* showGroupsTableViewController.swift in Sources */,
+				ACF090E1225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift in Sources */,
 				AC7B37C1221AC40600B137DD /* Number_model.xcdatamodeld in Sources */,
 				AC04652F2240EDC6003BD775 /* groupTableViewCell.swift in Sources */,
 				AC29CB32224118FB00794C4E /* editGroupTableViewCell.swift in Sources */,
@@ -915,7 +923,7 @@
 				CODE_SIGN_ENTITLEMENTS = temp2/temp2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = temp2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/temp2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -935,7 +943,7 @@
 				CODE_SIGN_ENTITLEMENTS = temp2/temp2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = temp2/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/temp2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

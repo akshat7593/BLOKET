@@ -63,6 +63,7 @@ class GroupViewController: UIViewController {
         print("Button tapped")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "groupContactsTableViewController") as! groupContactsTableViewController
+         let nextViewController1 = storyBoard.instantiateViewController(withIdentifier: "AddingNewGrpTableViewController") as! AddingNewGrpTableViewController
         //self.navigationController?.pushViewController(nextViewController, animated: true)
         print("Arc")
         print(groupTextField.text!)
@@ -104,9 +105,11 @@ class GroupViewController: UIViewController {
             do{
                 let users = try self.database.prepare(self.groupNamesTable)
                 var flag_check = 0
+                print("Here i am")
+                print(users)
                 for user in users {
                     print("Name: \(user[self.gColumn])")
-                    if(groupTextField.text! == user[self.gColumn]){
+                    if(groupTextField.text == user[self.gColumn]){
                         flag_check = 1
                     }
                 }
@@ -131,9 +134,11 @@ class GroupViewController: UIViewController {
                         self.present(alertController, animated: true, completion: nil)
                     }
                     else{
+                        
                         print(groupTextField.text!)
                         nextViewController.makeTable(groupName: groupTextField.text!)
-                        self.present(nextViewController, animated: true, completion: nil)
+                        nextViewController1.setTablename(groupName: groupTextField.text!)
+                        self.present(nextViewController1, animated: true, completion: nil)
                     }
             }
             catch{
@@ -141,12 +146,5 @@ class GroupViewController: UIViewController {
             }
         }
         
-        
-        
-        
-        
-
-    }
-    
-
 }
+    }

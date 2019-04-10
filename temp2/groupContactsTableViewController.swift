@@ -81,6 +81,13 @@ class groupContactsTableViewController: UITableViewController {
             print(error)
         }
         
+        let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName,self.oColumn <- false)
+        do {
+            try self.database2.run(insertTableName)
+            print("Table name INSERTED ")
+        } catch {
+            print(error)
+        }
 
     }
     
