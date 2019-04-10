@@ -147,6 +147,8 @@ class showGroupsTableViewController: UIViewController {
                 //updatingState(groupName: index.theTitle)
             }
         }
+        print("array on click of done...........")
+        print(GlobalVariable.blockedGroupsnumbers)
         let defaults = UserDefaults(suiteName: "group.tag.number")
         defaults!.setValue(GlobalVariable.blockedGroupsnumbers, forKey: "grp_block_array")
         b_logic.grp_block()

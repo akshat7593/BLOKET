@@ -28,7 +28,11 @@ class groupContactsTableViewController: UITableViewController {
 
     var grouptable = Table("1")
     var column = Expression<String>("number")
-    var grouparray = [String]()
+    var nameColumn = Expression<String>("name")
+    
+    var blockedname = [String]()
+    var blockednumbers = [String]()
+    //var grouparray = [String]()
     
     
     func makeTable(groupName: String?){
@@ -67,6 +71,7 @@ class groupContactsTableViewController: UITableViewController {
         
         let group_table = self.grouptable.create{ (table) in
             table.column(self.column, primaryKey: true)
+            table.column(self.nameColumn, primaryKey: false)
         }
         
         do {
@@ -87,24 +92,21 @@ class groupContactsTableViewController: UITableViewController {
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         
         let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
+        let fname = contact.contact.givenName
+        let lname = contact.contact.familyName
+        let fullname = fname + " " + lname
         let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
         //print(type(of: num))
-        if(num != nil){
-            grouparray.append(num)
-        }
-        else{
-            print("nill")
-        }
         
+        blockednumbers.append(num)
+        blockedname.append(fullname)
+
+
         
-        let hasFavorited = contact.hasFavorited
-        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
-        
-        //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
-        
-        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print(grouparray)
+        //cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
+        //print(grouparray)
     }
+    
     
     func someMethodIWantToCallRemove(cell: UITableViewCell) {
         //        print("Inside of ViewController now...")
@@ -114,23 +116,23 @@ class groupContactsTableViewController: UITableViewController {
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         
         let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
+        let fname = contact.contact.givenName
+        let lname = contact.contact.familyName
+        let fullname = fname + " " + lname
         let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
-        if(num != nil){
-            var filterarray = grouparray.filter{ $0 != num }
-            grouparray = filterarray
-        }
-        else{
-            print("nill")
-        }
         
+        var filterarray = blockednumbers.filter{ $0 != num }
+        blockednumbers = filterarray
         
-        let hasFavorited = contact.hasFavorited
-        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
+        filterarray = blockedname.filter{ $0 != fullname }
+        blockedname = filterarray
+        
+    
         
         //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
         
-        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print(grouparray)
+        //cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
+        //print(grouparray)
     }
     
     var twoDimensionalArray = [ExpandableNames]()
@@ -153,7 +155,7 @@ class groupContactsTableViewController: UITableViewController {
                 
                 let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
-                
+                request.sortOrder = CNContactSortOrder.givenName
                 do{
                     
                     
@@ -221,19 +223,35 @@ class groupContactsTableViewController: UITableViewController {
         
         
         //adding blocked numbers in database
-        print(grouparray)
-        for num in grouparray{
+        print(blockednumbers)
+        print(blockedname)
+        
+        //adding blocked numbers in database
+        for (index,num) in blockednumbers.enumerated(){
             //print(type(of: num))
-            let insertUser = self.grouptable.insert(self.column <- num)
-            //print("teste")
-            //print(insertUser)
+            print(index,num)
+            print(index,blockedname[index])
+            let insertUser = self.grouptable.insert(self.column <- num,self.nameColumn <- blockedname[index])
             do {
                 try self.database1.run(insertUser)
                 print("INSERTED USER")
             } catch {
                 print(error)
             }
+            
         }
+//        for num in grouparray{
+//            //print(type(of: num))
+//            let insertUser = self.grouptable.insert(self.column <- num)
+//            //print("teste")
+//            //print(insertUser)
+//            do {
+//                try self.database1.run(insertUser)
+//                print("INSERTED USER")
+//            } catch {
+//                print(error)
+//            }
+//        }
         
         //adding table name to groupNamesTable
         let insertTableName = self.groupNamesTable.insert(self.gColumn <- tableName,self.oColumn <- false)
@@ -249,6 +267,7 @@ class groupContactsTableViewController: UITableViewController {
             let users = try self.database1.prepare(self.grouptable)
             for user in users {
                 print("userNumber: \(user[self.column])")
+                print("userName: \(user[self.nameColumn])")
                 //finArray.append(user[self.number])
             }
         }

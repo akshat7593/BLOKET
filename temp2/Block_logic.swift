@@ -88,9 +88,12 @@ class Block_logic{
         print("............check grp blocking..........")
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        print("check entry of group..........")
+        print(array)
         CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-grp-blocking", completionHandler: {(error) -> Void in if let error = error {
             print("akshat"+error.localizedDescription)
             }})
+        print("check entry of group..........")
         print(array)
     }
     //ends

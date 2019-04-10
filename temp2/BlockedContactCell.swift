@@ -19,6 +19,7 @@ class BlockedContactCell: UITableViewCell {
         let deleteButton = UIButton(type: .system)
         //starButton.setImage(#imageLiteral(resourceName: "fav_star"), for: .normal)
         deleteButton.setTitle("X", for: .normal)
+        deleteButton.setTitleColor(.red, for: .normal)
         deleteButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         
         deleteButton.tintColor = .red

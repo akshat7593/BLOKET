@@ -13,179 +13,63 @@ import SQLite
 
 class editGroupTableViewController: UITableViewController {
     var database: Connection!
-    var favoritableContacts = [FavoritableContact]()
-    var twoDimensionalArray = [ExpandableNames]()
     //var index : Int = 0
     var groupTable = Table("1")
     var tabname = ""
     let column = Expression<String>("number")
+    let nameColumn = Expression<String>("name")
     
     let cellId = "cellId12312312"
-    var blockarray = [String]()
+    var blockednumbers = [String]()
+    var blockedname = [String]()
     
-    func someMethodIWantToCallInsertedit(cell: UITableViewCell) {
-        //        print("Inside of ViewController now...")
+    func delete(cell: UITableViewCell) {
         
+        print("delete tapped")
         // we're going to figure out which name we're clicking on
         
         guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
         
-        let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
-        let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
-        print(type(of: num))
-        if(num != nil){
-            blockarray.append(num)
+        //let name = blockedname[indexPathTapped.row]
+        let num = blockednumbers[indexPathTapped.row]
+        
+        
+        let user = self.groupTable.filter(self.column == num)
+        let deleteUser = user.delete()
+        do {
+            try self.database.run(deleteUser)
+        } catch {
+            print(error)
         }
-        else{
-            print("nill")
-        }
         
-        
-        let hasFavorited = contact.hasFavorited
-        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
-        
-        //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
-        
-        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print("block array from editgrouptable on aaddd")
-        print(blockarray)
+        self.tableView.reloadData()
+        self.viewDidLoad()
+        //b_logic.block()
     }
     
     
-    
-    func someMethodIWantToCallRemoveedit(cell: UITableViewCell) {
-        //        print("Inside of ViewController now...")
-        
-        // we're going to figure out which name we're clicking on
-        
-        guard let indexPathTapped = tableView.indexPath(for: cell) else { return }
-        
-        let contact = twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row]
-        let num = contact.contact.phoneNumbers.first?.value.stringValue ?? ""
-        if(num != nil){
-            var filterarray = blockarray.filter{ $0 != num }
-            blockarray = filterarray
-        }
-        else{
-            print("nill")
-        }
-        
-        
-        let hasFavorited = contact.hasFavorited
-        twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
-        
-        //        tableView.reloadRows(at: [indexPathTapped], with: .fade)
-        
-        cell.accessoryView?.tintColor = hasFavorited ? UIColor.lightGray : .red
-        print("block array from editgrouptable")
-        print(blockarray)
-    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        do {
-//            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
-//            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
-//            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-//            let fileUrl = documentDirectory.appendingPathComponent(tabname).appendingPathExtension("sqlite3")
-//            let database = try Connection(fileUrl.path)
-//            self.database = database
-//        } catch {
-//            print(error)
-//        }
-        
-        //adding already added numbers into blockarray
-//        do {
-//            let users = try self.database.prepare(groupTable)
-//            //print("check_users")
-//            //print(users)
-//            for user in users {
-//                //print("userNumber: \(user[self.number])")
-//                
-//                let number = user[self.column]
-//                blockarray.append(number)
-//                
-//            }
-//            print(blockarray)
-//            //print(blacklistData)
-//            
-//        } catch {
-//            print("bb")
-//            print(error)
-//        }
-        //print(blockarray)
-        
-        
-        fetchContacts()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(editGroupContactCell.self, forCellReuseIdentifier: cellId)
     }
     
-    private func fetchContacts(){
-        print("Attempting to fetch Contacts")
-        //making database table
-        
-        print("abc")
-        let store = CNContactStore()
-        
-        store.requestAccess(for: .contacts) { (granted, err) in
-            if let err=err{
-                print("Failed to request access",err)
-                return
-            }
-            
-            if granted{
-                print("Access granted")
-                
-                let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
-                let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
-                
-                do{
-                    
-                    
-                    
-                    try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
-                        
-                        //print(contact.givenName)
-                        //print(contact.familyName)
-                        //print(contact.phoneNumbers.first?.value.stringValue ?? "")
-                        
-                        self.favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
-                        
-                    })
-                    
-                    let names = ExpandableNames(isExpanded: true, names: self.favoritableContacts)
-                    self.twoDimensionalArray = [names]
-                    
-                }
-                catch let err{
-                    print("Failed to enumerate contacts:",err)
-                }
-                
-            }
-            else{
-                print("Access Denied")
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        self.viewDidLoad()
     }
+    
     // MARK: - Table view data source
     func setTable(tableName: String){
         groupTable = Table(tableName)
         tabname = tableName
         
         do {
-            //let appGroupDirectoryPath = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(appGroupId)
-            //let dataBaseURL = appGroupDirectoryPath!.URLByAppendingPathComponent("database.sqlite")
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent(tabname).appendingPathExtension("sqlite3")
             let database = try Connection(fileUrl.path)
@@ -196,72 +80,34 @@ class editGroupTableViewController: UITableViewController {
         
         //fetching
         do {
-            //print("aa")
-            //print(groupTable)
             let users = try self.database.prepare(groupTable)
             for user in users {
                 //print("userNumber: \(user[self.number])")
                 
                 let number = user[self.column]
-                blockarray.append(number)
+                let name = user[self.nameColumn]
+                blockednumbers.append(number)
+                blockedname.append(name)
                 
             }
-            print(blockarray)
+            print(blockedname)
+            print(blockednumbers)
             //print(blacklistData)
             
         } catch {
-            print("bb")
             print(error)
-        }
-        //fetchContacts()
     }
+}
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let button = UIButton(type: .system)
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        
-        button.addTarget(self, action: #selector(doneGroup), for: .touchUpInside)
-        
-        button.tag = section
-        
-        return button
+        let  headerCell = tableView.dequeueReusableCell(withIdentifier: "CustomHeaderCellEdit") as! CustomHeaderCellEdit
+        headerCell.backgroundColor = UIColor.black
+        headerCell.link = self
+        return headerCell
     }
     
     @objc func doneGroup(button: UIButton) {
-        //print("Trying to expand and close section...")
-
-
-        //var finArray = [String]()
-        //print("INSERT TAPPED")
-
-        //self.loadView()
-
-        do{
-            try self.database.run(self.groupTable.delete())
-        }
-        catch{
-            print(error)
-        }
-        
-        
-        //adding blocked numbers in database
-        for num in blockarray{
-            //print(type(of: num))
-            var insertUser = self.groupTable.insert(self.column <- num)
-            //print("teste")
-            //print(insertUser)
-            do {
-                try self.database.run(insertUser)
-                print("INSERTED USER")
-            } catch {
-                print(error)
-            }
-        }
-
 
 
         print("fetch controller")
@@ -269,18 +115,27 @@ class editGroupTableViewController: UITableViewController {
 //        self.viewDidLoad()
     }
     
+    @objc func addMore(button: UIButton){
+        print("in addmore function")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "AddMoreContactsController") as! AddMoreContactsController
+        nextViewController.customfunction(tableName: tabname)
+        self.present(nextViewController , animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return twoDimensionalArray.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if !twoDimensionalArray[section].isExpanded {
-            return 0
-        }
-        
-        return twoDimensionalArray[section].names.count
+        self.viewDidLoad()
+        return blockedname.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -291,14 +146,12 @@ class editGroupTableViewController: UITableViewController {
         //index+=1
         //print(index)
         cell.link = self
-        let favoritableContact = twoDimensionalArray[indexPath.section].names[indexPath.row]
         //print(favoritableContacts[0].contact.phoneNumbers[0].value.stringValue)
-        cell.temp(cN : favoritableContact.contact.phoneNumbers[0].value.stringValue,name: tabname)
-        cell.textLabel?.text = favoritableContact.contact.givenName + " " + favoritableContact.contact.familyName
+        //cell.temp(cN : favoritableContact.contact.phoneNumbers[0].value.stringValue,name: tabname)
+        cell.textLabel?.text = blockedname[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
-        cell.detailTextLabel?.text = favoritableContact.contact.phoneNumbers.first?.value.stringValue
-        print("2 new")
+        cell.detailTextLabel?.text = blockednumbers[indexPath.row]
         
         //cell.accessoryView?.tintColor = favoritableContact.hasFavorited ? UIColor.red : .lightGray
         

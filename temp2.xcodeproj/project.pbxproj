@@ -30,6 +30,9 @@
 		ACA0C7A4225BCF33005CF945 /* BlockedExpandableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7A3225BCF33005CF945 /* BlockedExpandableNames.swift */; };
 		ACA0C7AC225D125B005CF945 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */; };
 		ACA0C7B0225D125B005CF945 /* Call_grp_blocking.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ACA0C7B5225D8C94005CF945 /* CustomHeaderCellEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B4225D8C93005CF945 /* CustomHeaderCellEdit.swift */; };
+		ACA0C7B7225D93BE005CF945 /* AddMoreContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */; };
+		ACA0C7B9225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
 		ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */; };
 		ACD65AB421FED2CA00CE19FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB221FED2CA00CE19FE /* Main.storyboard */; };
@@ -181,6 +184,9 @@
 		ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_grp_blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		ACA0C7AD225D125B005CF945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACA0C7B4225D8C93005CF945 /* CustomHeaderCellEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderCellEdit.swift; sourceTree = "<group>"; };
+		ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsController.swift; sourceTree = "<group>"; };
+		ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsTableViewCell.swift; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedNumberDisplay.swift; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 		ACE93128221C711800229A27 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		ACE9312A221C71E600229A27 /* fetchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchViewController.swift; sourceTree = "<group>"; };
 		ACEE4F492249F8580017793E /* Block_logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_logic.swift; sourceTree = "<group>"; };
+		ACF090DF225DB5BC001DFAC1 /* Call_grp_blocking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Call_grp_blocking.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +261,7 @@
 		ACA0C7AA225D125B005CF945 /* Call_grp_blocking */ = {
 			isa = PBXGroup;
 			children = (
+				ACF090DF225DB5BC001DFAC1 /* Call_grp_blocking.entitlements */,
 				ACA0C7AB225D125B005CF945 /* CallDirectoryHandler.swift */,
 				ACA0C7AD225D125B005CF945 /* Info.plist */,
 			);
@@ -314,7 +322,10 @@
 				AC04652A2240E79C003BD775 /* groupDataModel.swift */,
 				AC04652E2240EDC6003BD775 /* groupTableViewCell.swift */,
 				AC29CB292241143800794C4E /* editGroupTableViewController.swift */,
+				ACA0C7B4225D8C93005CF945 /* CustomHeaderCellEdit.swift */,
 				AC29CB31224118FB00794C4E /* editGroupTableViewCell.swift */,
+				ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */,
+				ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */,
 				AC29CB352241329A00794C4E /* checkViewController.swift */,
 				ACA0C795225B6217005CF945 /* FetchContactsIndividualBlocking.swift */,
 				ACA0C79D225B62B9005CF945 /* ContactsCell.swift */,
@@ -442,6 +453,11 @@
 					};
 					ACA0C7A8225D125B005CF945 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					ACD65AA821FED2CA00CE19FE = {
 						CreatedOnToolsVersion = 10.1;
@@ -615,10 +631,12 @@
 				AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */,
 				ACA0C7A4225BCF33005CF945 /* BlockedExpandableNames.swift in Sources */,
 				ACD65ACF21FEF01900CE19FE /* DialViewController.swift in Sources */,
+				ACA0C7B9225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift in Sources */,
 				AC04652522401AD0003BD775 /* groupContactCell.swift in Sources */,
 				AC04652B2240E79C003BD775 /* groupDataModel.swift in Sources */,
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
 				AC29CB362241329A00794C4E /* checkViewController.swift in Sources */,
+				ACA0C7B7225D93BE005CF945 /* AddMoreContactsController.swift in Sources */,
 				ACA0C7A0225BCACA005CF945 /* DisplayBlockedNumbers.swift in Sources */,
 				AC29CB2A2241143800794C4E /* editGroupTableViewController.swift in Sources */,
 				ACEE4F4A2249F8580017793E /* Block_logic.swift in Sources */,
@@ -631,6 +649,7 @@
 				ACA0C7A2225BCE93005CF945 /* BlockedContactCell.swift in Sources */,
 				ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */,
 				AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */,
+				ACA0C7B5225D8C94005CF945 /* CustomHeaderCellEdit.swift in Sources */,
 				ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -734,6 +753,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Call_grp_blocking/Call_grp_blocking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = Call_grp_blocking/Info.plist;
@@ -754,6 +774,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Call_grp_blocking/Call_grp_blocking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
 				INFOPLIST_FILE = Call_grp_blocking/Info.plist;

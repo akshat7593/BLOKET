@@ -478,6 +478,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" id="Sc4-ge-uez" customClass="ContactCell" customModule="temp2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sc4-ge-uez" id="kw7-1P-eq8">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="6TD-XX-Z3s" id="N4n-fw-fjn"/>
                             <outlet property="delegate" destination="6TD-XX-Z3s" id="tLe-lD-KyH"/>
@@ -526,13 +536,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="gRg-tz-9zk">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CustomHeaderCellEdit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomHeaderCellEdit" id="gRg-tz-9zk" customClass="CustomHeaderCellEdit" customModule="temp2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gRg-tz-9zk" id="gib-xW-Wax">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-mw-cmy">
+                                            <rect key="frame" x="209" y="6" width="37" height="30"/>
+                                            <state key="normal" title="Done"/>
+                                            <connections>
+                                                <action selector="DoneAction:" destination="gRg-tz-9zk" eventType="touchUpInside" id="YM1-4w-iTc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHQ-An-DRM">
+                                            <rect key="frame" x="20" y="6" width="32" height="30"/>
+                                            <state key="normal" title="ADD"/>
+                                            <connections>
+                                                <action selector="AddAction:" destination="gRg-tz-9zk" eventType="touchUpInside" id="f8p-ml-QwI"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hHQ-An-DRM" firstAttribute="top" secondItem="gib-xW-Wax" secondAttribute="top" constant="6" id="EXu-vy-Fmo"/>
+                                        <constraint firstItem="yXc-mw-cmy" firstAttribute="leading" secondItem="hHQ-An-DRM" secondAttribute="trailing" constant="157" id="Odp-g9-KSc"/>
+                                        <constraint firstItem="yXc-mw-cmy" firstAttribute="top" secondItem="gib-xW-Wax" secondAttribute="top" constant="6" id="baP-eS-cpn"/>
+                                        <constraint firstItem="hHQ-An-DRM" firstAttribute="leading" secondItem="gib-xW-Wax" secondAttribute="leading" constant="20" id="hXb-Sj-5ER"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AddBtn" destination="hHQ-An-DRM" id="UEh-bx-Xtt"/>
+                                    <outlet property="DoneBtn" destination="yXc-mw-cmy" id="Cpg-uX-ECC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -543,7 +579,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gp-Zo-UkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="-975"/>
+            <point key="canvasLocation" x="1591.2" y="-975.56221889055485"/>
+        </scene>
+        <!--Add More Contacts Controller-->
+        <scene sceneID="KxW-Xp-nzv">
+            <objects>
+                <tableViewController restorationIdentifier="AddMoreContactsController" storyboardIdentifier="AddMoreContactsController" id="Uzz-5A-feI" customClass="AddMoreContactsController" customModule="temp2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="POs-Se-jQ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rjW-kU-1Ef">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rjW-kU-1Ef" id="0fK-i7-hVh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Uzz-5A-feI" id="YZ7-Hk-RPL"/>
+                            <outlet property="delegate" destination="Uzz-5A-feI" id="lrO-tE-JH8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OvH-oL-I4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2250" y="-976"/>
         </scene>
         <!--Item-->
         <scene sceneID="Tus-Rr-Ox5">

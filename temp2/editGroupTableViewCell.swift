@@ -59,43 +59,36 @@ class editGroupContactCell: UITableViewCell {
 
     var link: editGroupTableViewController?
     
-    func temp(cN : String?, name: String?){
-        //print("We in group temp")
-        //print(cN!)
-        usersTable = Table(name!)
-        tabname = name!
-        
-        let starButton = UISwitch(frame:CGRect(x: 150, y: 150, width: 0, height: 0))
-        starButton.addTarget(self, action:#selector(add_to_blocklist(_:)),for: .valueChanged)
-        //print("1 new")
-        starButton.setOn(false, animated: false)
-        let boolean = setButtonOn(num: cN!)
-                if(boolean){
-                    starButton.setOn(true, animated: false)
-                }
-                else{
-                    starButton.setOn(false, animated: false)
-                }
-        
-        accessoryView = starButton
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        //print("In BlockedContactCell")
+        let deleteButton = UIButton(type: .system)
+        //starButton.setImage(#imageLiteral(resourceName: "fav_star"), for: .normal)
+        deleteButton.setTitle("X", for: .normal)
+        deleteButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        
+        deleteButton.tintColor = .red
+        deleteButton.addTarget(self, action: #selector(add_to_blocklist(_: )), for: .touchUpInside)
+        
+        accessoryView = deleteButton
         
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
     
     @objc private func add_to_blocklist(_ sender: UISwitch){
-        if(sender.isOn ==  true){
-            print("add to database")
-            link?.someMethodIWantToCallInsertedit(cell: self)
-        }
-        else{
-            print("abdbs")
-            link?.someMethodIWantToCallRemoveedit(cell: self)
-        }
+        link?.delete(cell: self)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
     
     required init?(coder aDecoder: NSCoder) {

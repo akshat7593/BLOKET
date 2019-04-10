@@ -34,8 +34,9 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // Numbers must be provided in numerically ascending order.
         //starts own
         let defaults = UserDefaults(suiteName: "group.tag.number")
-        //(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        print("array in extension.......")
+        print(array)
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -50,6 +51,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
+        print("temp in extension.......")
         print(temp)
         //ends
         let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = temp
@@ -67,6 +69,9 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //starts own
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        print("array in extension")
+        print(array)
+        
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -81,6 +86,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
+        print("temp in extension")
         print(temp)
         //ends
         

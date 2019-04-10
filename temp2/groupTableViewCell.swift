@@ -45,7 +45,7 @@ class groupTableViewCell: UITableViewCell {
 //        }
 //        do {
 //            print("two")
-//            
+//
 //            let users = try self.database1.prepare(self.groupNamesTable)
 //            for user in users {
 //                //print("userNumber: \(user[self.number])")
@@ -53,11 +53,11 @@ class groupTableViewCell: UITableViewCell {
 //                    onoff = user[self.oColumn]
 //                }
 //                //groupDataModel.append(groupNamesModal(name: name,edit:edit,delBtn:del))
-//                
+//
 //            }
-//            
+//
 //            //print(blacklistData)
-//            
+//
 //        } catch {
 //            print(error)
 //        }
