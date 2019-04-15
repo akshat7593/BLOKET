@@ -169,7 +169,7 @@ class groupContactsTableViewController: UITableViewController {
                     
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
                         
-                        self.favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
+                        self.favoritableContacts.append(FavoritableContact(contact: contact, name: "aks", hasFavorited: false))
                         
                     })
                     

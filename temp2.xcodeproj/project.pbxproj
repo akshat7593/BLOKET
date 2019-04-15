@@ -21,6 +21,12 @@
 		AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */; };
 		AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */; };
 		AC7B37C1221AC40600B137DD /* Number_model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */; };
+		AC967899226495C2006D83F7 /* IndividualCustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC967898226495C2006D83F7 /* IndividualCustomHeader.swift */; };
+		AC9678A122649C57006D83F7 /* DisplayWhiteListNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9678A022649C57006D83F7 /* DisplayWhiteListNumbers.swift */; };
+		AC9678A322649CA5006D83F7 /* WhiteListContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9678A222649CA5006D83F7 /* WhiteListContactCell.swift */; };
+		AC9678A522649D05006D83F7 /* WhiteListExpandableNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9678A422649D05006D83F7 /* WhiteListExpandableNames.swift */; };
+		AC9678A92264E905006D83F7 /* EnableCustomHeaderWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9678A82264E905006D83F7 /* EnableCustomHeaderWhite.swift */; };
+		AC9678AB2264EBAD006D83F7 /* EnableCustomHeaderBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9678AA2264EBAD006D83F7 /* EnableCustomHeaderBlack.swift */; };
 		AC9E254B220F12F9005CA487 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */; };
 		AC9E254F220F12F9005CA487 /* Call_Blocking.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC9E2548220F12F9005CA487 /* Call_Blocking.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ACA0C796225B6217005CF945 /* FetchContactsIndividualBlocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C795225B6217005CF945 /* FetchContactsIndividualBlocking.swift */; };
@@ -175,6 +181,12 @@
 		AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableName.swift; sourceTree = "<group>"; };
 		AC7B37C0221AC40600B137DD /* Number_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Number_model.xcdatamodel; sourceTree = "<group>"; };
 		AC7B37C9221B198E00B137DD /* Call_Blocking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Call_Blocking.entitlements; sourceTree = "<group>"; };
+		AC967898226495C2006D83F7 /* IndividualCustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualCustomHeader.swift; sourceTree = "<group>"; };
+		AC9678A022649C57006D83F7 /* DisplayWhiteListNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayWhiteListNumbers.swift; sourceTree = "<group>"; };
+		AC9678A222649CA5006D83F7 /* WhiteListContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListContactCell.swift; sourceTree = "<group>"; };
+		AC9678A422649D05006D83F7 /* WhiteListExpandableNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListExpandableNames.swift; sourceTree = "<group>"; };
+		AC9678A82264E905006D83F7 /* EnableCustomHeaderWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableCustomHeaderWhite.swift; sourceTree = "<group>"; };
+		AC9678AA2264EBAD006D83F7 /* EnableCustomHeaderBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableCustomHeaderBlack.swift; sourceTree = "<group>"; };
 		AC9E2548220F12F9005CA487 /* Call_Blocking.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Call_Blocking.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9E254A220F12F9005CA487 /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		AC9E254C220F12F9005CA487 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,10 +315,16 @@
 				AC5B4E9821FF93EA0079EE2D /* contactsTableViewController.swift */,
 				AC5B4EA421FF96BE0079EE2D /* ContactCell.swift */,
 				AC5B4EA621FF96D10079EE2D /* ExpandableName.swift */,
+				AC967898226495C2006D83F7 /* IndividualCustomHeader.swift */,
 				ACD65ACE21FEF01900CE19FE /* DialViewController.swift */,
+				AC9678A022649C57006D83F7 /* DisplayWhiteListNumbers.swift */,
+				AC9678A222649CA5006D83F7 /* WhiteListContactCell.swift */,
+				AC9678A422649D05006D83F7 /* WhiteListExpandableNames.swift */,
+				AC9678A82264E905006D83F7 /* EnableCustomHeaderWhite.swift */,
 				ACA0C79F225BCACA005CF945 /* DisplayBlockedNumbers.swift */,
 				ACA0C7A1225BCE93005CF945 /* BlockedContactCell.swift */,
 				ACA0C7A3225BCF33005CF945 /* BlockedExpandableNames.swift */,
+				AC9678AA2264EBAD006D83F7 /* EnableCustomHeaderBlack.swift */,
 				ACE93126221C70BB00229A27 /* DataModel.swift */,
 				ACE9312A221C71E600229A27 /* fetchViewController.swift */,
 				ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */,
@@ -628,10 +646,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC9678A322649CA5006D83F7 /* WhiteListContactCell.swift in Sources */,
 				AC04652122401104003BD775 /* GroupViewController.swift in Sources */,
 				ACA0C796225B6217005CF945 /* FetchContactsIndividualBlocking.swift in Sources */,
 				AC04652322401A00003BD775 /* groupContactsTableViewController.swift in Sources */,
 				AC5B4EA521FF96BE0079EE2D /* ContactCell.swift in Sources */,
+				AC9678A92264E905006D83F7 /* EnableCustomHeaderWhite.swift in Sources */,
+				AC967899226495C2006D83F7 /* IndividualCustomHeader.swift in Sources */,
 				ACE9312B221C71E600229A27 /* fetchViewController.swift in Sources */,
 				ACA0C79E225B62B9005CF945 /* ContactsCell.swift in Sources */,
 				AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */,
@@ -642,6 +663,7 @@
 				AC04652B2240E79C003BD775 /* groupDataModel.swift in Sources */,
 				ACF090E3225DBC11001DFAC1 /* AddingnewGrpCell.swift in Sources */,
 				AC5B4EA721FF96D10079EE2D /* ExpandableName.swift in Sources */,
+				AC9678AB2264EBAD006D83F7 /* EnableCustomHeaderBlack.swift in Sources */,
 				AC29CB362241329A00794C4E /* checkViewController.swift in Sources */,
 				ACA0C7B7225D93BE005CF945 /* AddMoreContactsController.swift in Sources */,
 				ACA0C7A0225BCACA005CF945 /* DisplayBlockedNumbers.swift in Sources */,
@@ -657,6 +679,8 @@
 				ACA0C7A2225BCE93005CF945 /* BlockedContactCell.swift in Sources */,
 				ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */,
 				AC5B4E9921FF93EA0079EE2D /* contactsTableViewController.swift in Sources */,
+				AC9678A122649C57006D83F7 /* DisplayWhiteListNumbers.swift in Sources */,
+				AC9678A522649D05006D83F7 /* WhiteListExpandableNames.swift in Sources */,
 				ACA0C7B5225D8C94005CF945 /* CustomHeaderCellEdit.swift in Sources */,
 				ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */,
 			);

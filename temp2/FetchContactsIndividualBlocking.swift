@@ -26,6 +26,11 @@ class FetchContactsIndividualBlocking: UITableViewController {
     // you should use Custom Delegation properly instead
     
     let collation = UILocalizedIndexedCollation.current()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var favoritableContacts = [FavoritableContact]()
+    var filteredContacts = [FavoritableContact]()
     func someMethodIWantToCall(cell: UITableViewCell) {
         //        print("Inside of ViewController now...")
         
@@ -85,20 +90,24 @@ class FetchContactsIndividualBlocking: UITableViewController {
                 request.sortOrder = CNContactSortOrder.givenName
                 do {
                     
-                    var favoritableContacts = [FavoritableContact]()
+                    
                     
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
                         
                         print(contact.givenName)
                         print(contact.familyName)
-                        print(contact.phoneNumbers.first?.value.stringValue ?? "")
+                        if(contact.phoneNumbers.first?.value.stringValue ?? "" != ""){
+                            //print("empty")
+                            self.favoritableContacts.append(FavoritableContact(contact: contact, name: contact.givenName, hasFavorited: false))
+                        }
+                        //print(contact.phoneNumbers.first ?? "")
+                        //if(contact.phoneNumbers.first)
                         
-                        favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
                         
                         //                        favoritableContacts.append(FavoritableContact(name: contact.givenName + " " + contact.familyName, hasFavorited: false))
                     })
                     
-                    let names = ExpandableNames(isExpanded: true, names: favoritableContacts)
+                    let names = ExpandableNames(isExpanded: true, names: self.favoritableContacts)
                     self.twoDimensionalArray = [names]
                     
                 } catch let err {
@@ -143,6 +152,21 @@ class FetchContactsIndividualBlocking: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //setup seacrch controller
+        searchController.searchResultsUpdater = self
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "search contacts"
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        searchController.searchBar.delegate = self
+        
+        tableView.tableHeaderView = searchController.searchBar
+        
+        //ends
         
         fetchContacts()
         
@@ -235,9 +259,70 @@ class FetchContactsIndividualBlocking: UITableViewController {
         return cell
     }
     
+    //adding from candy
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredContacts = favoritableContacts.filter({( favcontact : FavoritableContact) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (favcontact.name == scope)
+            
+            if searchBarIsEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && (favcontact.name?.lowercased().contains(searchText.lowercased()))!
+            }
+        })
+        tableView.reloadData()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
 }
 
+extension FetchContactsIndividualBlocking: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
 
+extension FetchContactsIndividualBlocking: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+    }
+    //ends
+
+}
+
+//archit test
+//extension FetchContactsIndividualBlocking : UISearchResultsUpdating {
+//    func filterContentForSearchText(_ searchText: String) {
+//        if(searchText == "") {
+//            matchingItems = []
+//        }
+//
+//        else {
+//            matchingItems = arrayOfFixes.filter { fix in
+//                return fix.lowercased().contains(searchText.lowercased())
+//            }
+//            tableView.reloadData()
+//        }
+//    }
+//
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchText = searchController.searchBar.text
+//        filterContentForSearchText(searchText!)
+//        self.tableView.reloadData()
+//    }
+//}
+//ends
 
 
 

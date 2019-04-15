@@ -13,6 +13,9 @@ import SQLite
 
 class contactsTableViewController: UITableViewController {
     var database: Connection!
+    var database1: Connection!
+    var database2: Connection!
+    
     var favoritableContacts = [FavoritableContact]()
     var twoDimensionalArray = [ExpandableNames]()
     //var index : Int = 0
@@ -20,10 +23,21 @@ class contactsTableViewController: UITableViewController {
     let number = Expression<String>("number")
     let name = Expression<String>("name")
     
+    
+    let whiteTable = Table("whitenumbers")
+    let whiteNumber = Expression<String>("number")
+    let whiteName = Expression<String>("name")
+    
+    let enableTable = Table("enable_W_B_List")
+    let action = Expression<String>("action")
+    let state = Expression<Bool>("state")
+    
+    
     let cellId = "cellId123123"
     var blockedname = [String]()
     var blockednumbers = [String]()
-
+    var number_contact = [String]()
+    
     let b_logic = Block_logic();
     func someMethodIWantToCall(cell: UITableViewCell) {
 
@@ -134,7 +148,26 @@ class contactsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
+        
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("whitenumbers").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database1 = database
+        } catch {
+            print(error)
+        }
+        
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("enable_W_B_List").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database2 = database
+        } catch {
+            print(error)
+        }
 
+        //creating blacklist database table
         let block_table = self.blockTable.create { (table) in
             table.column(self.number, primaryKey: true)
             table.column(self.name, primaryKey: false)
@@ -146,7 +179,51 @@ class contactsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
+        //----------------------------//
+        
+        //creating whitelist database table
+        let white_table = self.whiteTable.create { (table) in
+            table.column(self.whiteNumber, primaryKey: true)
+            table.column(self.whiteName, primaryKey: false)
+        }
+        
+        do {
+            try self.database1.run(white_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
 
+        //--------------------------//
+        
+        //creating enableTable database table
+        let enable_table = self.enableTable.create { (table) in
+            table.column(self.action, primaryKey: true)
+            table.column(self.state, primaryKey: false)
+        }
+        
+        do {
+            try self.database2.run(enable_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        
+        //--------------------------//
+        
+        
+        //------inserting initial states in enableTable--------//
+        let insertUser = self.enableTable.insert(self.action <- "WhiteList",self.state <- false)
+        let insertUser1 = self.enableTable.insert(self.action <- "BlackList",self.state <- false)
+            do {
+                try self.database2.run(insertUser)
+                try self.database2.run(insertUser1)
+                print("INSERTED USER")
+            } catch {
+                print(error)
+            }
+        //-----------------------//
+        
         let store = CNContactStore()
         
 //        store.requestAccess(for: .contacts) { (granted, err) in
@@ -156,16 +233,19 @@ class contactsTableViewController: UITableViewController {
 //            }
 //
 //            if granted{
-                print("Access granted")
+                print("Access granted1")
                 let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 request.sortOrder = CNContactSortOrder.givenName
+        
                 do{
-
+                    
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
 
-                        
-                        self.favoritableContacts.append(FavoritableContact(contact: contact, hasFavorited: false))
+                        if(contact.phoneNumbers.first?.value.stringValue ?? "" != ""){
+                            self.favoritableContacts.append(FavoritableContact(contact: contact, name: "aks", hasFavorited: false))
+                        }
+                        //self.number_contact.append(contact.phoneNumbers[0].value.stringValue)
                         
                     })
                     
@@ -183,6 +263,7 @@ class contactsTableViewController: UITableViewController {
 //            }
 //        }
         
+        
         do {
             let users = try self.database.prepare(self.blockTable)
             for user in users {
@@ -199,51 +280,45 @@ class contactsTableViewController: UITableViewController {
     }
     
     
+    func addContactsinArray(){
+        //print(self.twoDimensionalArray.count)
+        for number in self.favoritableContacts{
+            //print(index)
+            //print(number.contact.phoneNumbers[0].value.stringValue)
+            number_contact.append(number.contact.phoneNumbers[0].value.stringValue)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.title = "Contacts"
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
         fetchContacts()
+        addContactsinArray()
         
-        
-        
-        
+        print(number_contact)
+        let defaults = UserDefaults(suiteName: "group.tag.number")
+        defaults!.setValue(number_contact, forKey: "all_number")
         tableView.register(ContactCell.self, forCellReuseIdentifier: cellId)
         
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCell(withIdentifier: "IndividualCustomHeader") as! IndividualCustomHeader
+        headerCell.backgroundColor = UIColor.black
+        headerCell.link = self
+        return headerCell
         
-        let button = UIButton(type: .system)
-        button.setTitle("Block", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
-        
-        button.tag = section
-        
-        return button
     }
     
-    @objc func handleExpandClose(button: UIButton) {
-        print("Trying to expand and close section...")
+    @objc func AddtoBlackList(button: UIButton) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DisplayBlockedNumbers") as! DisplayBlockedNumbers
-        
-        //var finArray = [String]()
-        //print("INSERT TAPPED")
-
-        //self.loadView()
-
-
-        //adding blocked numbers in database
+        //        self.viewDidLoad()
         for (index,num) in blockednumbers.enumerated(){
             //print(type(of: num))
             print(index,num)
@@ -257,7 +332,7 @@ class contactsTableViewController: UITableViewController {
             }
             
         }
-
+        
         //displaying blocked numbers
         do{
             let users = try self.database.prepare(self.blockTable)
@@ -267,17 +342,43 @@ class contactsTableViewController: UITableViewController {
                 //finArray.append(user[self.number])
             }
         }
-            catch{
+        catch{
+            print(error)
+        }
+        
+
+        //b_logic.block()
+    }
+    
+    @objc func AddtoWhiteList(button: UIButton){
+        for (index,num) in blockednumbers.enumerated(){
+            //print(type(of: num))
+            print(index,num)
+            print(index,blockedname[index])
+            let insertUser = self.whiteTable.insert(self.whiteNumber <- num,self.whiteName <- blockedname[index])
+            do {
+                try self.database1.run(insertUser)
+                print("INSERTED USER")
+            } catch {
                 print(error)
             }
+            
+        }
         
-        //nextViewController.makeTable(groupName: groupTextField.text!)
-        //self.present(nextViewController, animated: true, completion: nil)
-//        print("fetch controller")
-//        self.viewDidLoad()
-        b_logic.block()
-        
+        //displaying blocked numbers
+        do{
+            let users = try self.database1.prepare(self.whiteTable)
+            for user in users {
+                print("userNumber: \(user[self.number])")
+                print("username: \(user[self.name])")
+                //finArray.append(user[self.number])
+            }
+        }
+        catch{
+            print(error)
+        }
     }
+    
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 36
@@ -315,9 +416,8 @@ class contactsTableViewController: UITableViewController {
         return cell
     }
     
-
-    
 }
+
 
 
 
