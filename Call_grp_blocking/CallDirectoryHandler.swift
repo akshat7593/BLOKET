@@ -34,7 +34,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // Numbers must be provided in numerically ascending order.
         //starts own
         let defaults = UserDefaults(suiteName: "group.tag.number")
-        let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        let array = defaults!.object(forKey: "grp_directory_array") as? [String] ?? [String]()
         print("array in extension.......")
         print(array)
         var temp : Array<Int64> = []
@@ -68,7 +68,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         
         //starts own
         let defaults = UserDefaults(suiteName: "group.tag.number")
-        let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        let array = defaults!.object(forKey: "grp_directory_array") as? [String] ?? [String]()
         print("array in extension")
         print(array)
         

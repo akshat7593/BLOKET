@@ -114,7 +114,7 @@ extension BlockedNumberDisplay: UITableViewDelegate, UITableViewDataSource{
         self.tableView.reloadData()
         self.viewDidLoad()
         
-        b_logic.block()
+        b_logic.black_white()
         
         
     }

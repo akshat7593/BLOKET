@@ -21,6 +21,8 @@ class EnableCustomHeaderBlack: UITableViewCell {
     @IBOutlet weak var black_switch: UISwitch!
     
     
+    var block_logic = Block_logic()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,24 +104,34 @@ class EnableCustomHeaderBlack: UITableViewCell {
                     
                     let action = user[self.action]
                     var state = user[self.state]
-                    if(action=="WhiteList"){
-                        state = true
-                    }
+//                    if(action=="WhiteList"){
+//                        state = true
+//                    }
                     if(action=="BlackList"){
                         state=false
                         black_switch.setOn(false, animated: true)
+                        let user = self.enableTable.filter(self.action == action)
+                        
+                        let updateUser = user.update(self.state <- state)
+                        do {
+                            try self.database.run(updateUser)
+                            
+                        } catch {
+                            print(error)
+                        }
+
                         
                     }
                     
-                    let user = self.enableTable.filter(self.action == action)
-                    
-                    let updateUser = user.update(self.state <- state)
-                    do {
-                        try self.database.run(updateUser)
-                        
-                    } catch {
-                        print(error)
-                    }
+//                    let user = self.enableTable.filter(self.action == action)
+//
+//                    let updateUser = user.update(self.state <- state)
+//                    do {
+//                        try self.database.run(updateUser)
+//
+//                    } catch {
+//                        print(error)
+//                    }
                     
                 }
                 
@@ -127,6 +139,9 @@ class EnableCustomHeaderBlack: UITableViewCell {
                 print(error)
             }
         }
+        //calling function in block logic file
+        block_logic.black_white()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

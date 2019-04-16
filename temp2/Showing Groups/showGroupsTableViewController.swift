@@ -125,7 +125,7 @@ class showGroupsTableViewController: UIViewController {
     
     
     //function to update myData array after preesing Done button
-    @objc func handleExpandClose(button: UIButton) {
+    @objc func handleExpandClose() {
         GlobalVariable.blockedGroupsnumbers.removeAll()
         for index in GlobalVariable.myData{
             if(index.theSwitchState){
@@ -267,17 +267,11 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let button = UIButton(type: .system)
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
-        
-        button.tag = section
-        
-        return button
+        let  headerCell = tableView.dequeueReusableCell(withIdentifier: "EnableCustomHeaderGroups") as! EnableCustomHeaderGroups
+        headerCell.backgroundColor = UIColor.gray
+        headerCell.link = self
+        headerCell.check()
+        return headerCell
     }
     
     
@@ -287,6 +281,9 @@ extension showGroupsTableViewController: UITableViewDelegate, UITableViewDataSou
         
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 70
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{

@@ -215,9 +215,13 @@ class contactsTableViewController: UITableViewController {
         //------inserting initial states in enableTable--------//
         let insertUser = self.enableTable.insert(self.action <- "WhiteList",self.state <- false)
         let insertUser1 = self.enableTable.insert(self.action <- "BlackList",self.state <- false)
+        let insertUser2 = self.enableTable.insert(self.action <- "WhiteListGroup",self.state <- false)
+        let insertUser3 = self.enableTable.insert(self.action <- "BlackListGroup",self.state <- false)
             do {
                 try self.database2.run(insertUser)
                 try self.database2.run(insertUser1)
+                try self.database2.run(insertUser2)
+                try self.database2.run(insertUser3)
                 print("INSERTED USER")
             } catch {
                 print(error)
@@ -347,7 +351,7 @@ class contactsTableViewController: UITableViewController {
         }
         
 
-        //b_logic.block()
+        b_logic.black_white()
     }
     
     @objc func AddtoWhiteList(button: UIButton){
@@ -377,6 +381,8 @@ class contactsTableViewController: UITableViewController {
         catch{
             print(error)
         }
+        
+        b_logic.black_white()
     }
     
     

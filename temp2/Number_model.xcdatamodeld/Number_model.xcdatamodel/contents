@@ -5,8 +5,9 @@
         <attribute name="block_array" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="block_array_old" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="grp_block_array" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grp_directory_array" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Block" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Block" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
