@@ -15,7 +15,7 @@ class groupTableViewCell: UITableViewCell {
     var groupNamesTable = Table("GroupNameTable")
     var gColumn = Expression<String>("names")
     var oColumn = Expression<Bool>("onoff")
-    
+    let b_logic = Block_logic()
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var delBtn: UIButton!
@@ -91,15 +91,18 @@ class groupTableViewCell: UITableViewCell {
         if(sender.isOn ==  true){
             //returnAns = true
             showGroupsTableViewController.GlobalVariable.myData[Index!].theSwitchState = true
+            link?.handleExpandClose()
             //link?.someMethodIWantToCallT(cell: self)
         }
         else{
             returnAns = false
             print("remove to database")
             showGroupsTableViewController.GlobalVariable.myData[Index!].theSwitchState = false
+            link?.handleExpandClose()
             //link?.someMethodIWantToCallF(cell: self)
             //link?.someMethodIWantToCallRemove(cell: self)
         }
+        b_logic.grp_block()
     }
     
    

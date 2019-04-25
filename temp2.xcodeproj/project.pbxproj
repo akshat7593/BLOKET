@@ -40,9 +40,9 @@
 		ACA0C7B5225D8C94005CF945 /* CustomHeaderCellEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B4225D8C93005CF945 /* CustomHeaderCellEdit.swift */; };
 		ACA0C7B7225D93BE005CF945 /* AddMoreContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */; };
 		ACA0C7B9225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */; };
+		ACA185012270E8D40064B4FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA185002270E8D40064B4FC /* Main.storyboard */; };
 		ACD65AAD21FED2CA00CE19FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */; };
 		ACD65AAF21FED2CA00CE19FE /* BlockedNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */; };
-		ACD65AB421FED2CA00CE19FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB221FED2CA00CE19FE /* Main.storyboard */; };
 		ACD65AB621FED2CD00CE19FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB521FED2CD00CE19FE /* Assets.xcassets */; };
 		ACD65AB921FED2CD00CE19FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD65AB721FED2CD00CE19FE /* LaunchScreen.storyboard */; };
 		ACD65AC421FED2CD00CE19FE /* temp2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD65AC321FED2CD00CE19FE /* temp2Tests.swift */; };
@@ -203,10 +203,10 @@
 		ACA0C7B4225D8C93005CF945 /* CustomHeaderCellEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderCellEdit.swift; sourceTree = "<group>"; };
 		ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsController.swift; sourceTree = "<group>"; };
 		ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsTableViewCell.swift; sourceTree = "<group>"; };
+		ACA185002270E8D40064B4FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ACD65AA921FED2CA00CE19FE /* temp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = temp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedNumberDisplay.swift; sourceTree = "<group>"; };
-		ACD65AB321FED2CA00CE19FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACD65AB521FED2CD00CE19FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD65AB821FED2CD00CE19FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD65ABA21FED2CD00CE19FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -387,6 +387,7 @@
 				AC9678AD2265029D006D83F7 /* IndividualContacts */,
 				AC9678AC22650254006D83F7 /* Dialer code */,
 				AC17D5F72213F6EC00DF9D3A /* temp2.entitlements */,
+				ACA185002270E8D40064B4FC /* Main.storyboard */,
 				ACE93126221C70BB00229A27 /* DataModel.swift */,
 				ACE9312A221C71E600229A27 /* fetchViewController.swift */,
 				ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */,
@@ -394,7 +395,6 @@
 				ACE93128221C711800229A27 /* TableViewCell.swift */,
 				ACEE4F492249F8580017793E /* Block_logic.swift */,
 				AC7B37BF221AC40600B137DD /* Number_model.xcdatamodeld */,
-				ACD65AB221FED2CA00CE19FE /* Main.storyboard */,
 				ACD65AB521FED2CD00CE19FE /* Assets.xcassets */,
 				ACD65AB721FED2CD00CE19FE /* LaunchScreen.storyboard */,
 				AC17D5F52212846C00DF9D3A /* MsgViewController.swift */,
@@ -661,9 +661,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA185012270E8D40064B4FC /* Main.storyboard in Resources */,
 				ACD65AB921FED2CD00CE19FE /* LaunchScreen.storyboard in Resources */,
 				ACD65AB621FED2CD00CE19FE /* Assets.xcassets in Resources */,
-				ACD65AB421FED2CA00CE19FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,14 +772,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ACD65AB221FED2CA00CE19FE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ACD65AB321FED2CA00CE19FE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ACD65AB721FED2CD00CE19FE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

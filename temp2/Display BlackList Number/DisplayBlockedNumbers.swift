@@ -81,7 +81,7 @@ class DisplayBlockedNumbers: UITableViewController {
                 let num = user[self.number]
                 
                 self.favoritableContacts.append(FavoritableContacts(name: fullname,number: num, hasFavorited: false))
-
+                
             }
             
             let names = BlockedExpandableNames(isExpanded: true, name: self.favoritableContacts)

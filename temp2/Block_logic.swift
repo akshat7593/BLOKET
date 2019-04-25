@@ -24,12 +24,26 @@ class Block_logic{
     let state = Expression<Bool>("state")
     var flag = 0
     var flag1 = 0
+    
+    //test
+    var individual_flag=0
+    
     //let grp_table = showGroupsTableViewController()
     var blockarray = [String]()
     var whitearray = [String]()
     var allcontacts = [String]()
     var call_block_array = [String]()
     var grp_block_array = [String]()
+    
+    var individual_white_array = [String]()
+    var combined_grp_array = [String]()
+    
+    //array and flag variable for individual whitelisting combined
+    var grp_flag = 0
+    var grp_white_array = [String]()
+    
+    //ends
+    
     //Logic for group Blocking
     func grp_block(){
         print("............check grp blocking..........")
@@ -65,13 +79,50 @@ class Block_logic{
                         flag1 = 2
                     }
                 }
+                if(action=="WhiteList"){
+                    if(state == true){
+                        individual_flag = 1
+                    }
+                }
             }
         }catch{
             print(error)
         }
+        //data of individual whitelisting
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("whitenumbers").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.white_list = database
+        } catch {
+            print(error)
+        }
+        do{
+            individual_white_array = []
+            let users = try self.white_list.prepare(self.white_table)
+            for user in users {
+                //print("userNumber: \(user[self.column])")
+                //                blockarray.append(Int64(user[self.column].filter{ !" ".characters.contains($0)})!)
+                individual_white_array.append(user[self.column])
+            }
+        }
+        catch{
+            print(error)
+        }
+        //ends
         //ends
         
         //updating
+        if(individual_flag == 1){
+            combined_grp_array = array
+            for number in individual_white_array{
+                combined_grp_array.append(number)
+            }
+        }
+        else{
+            combined_grp_array = array
+        }
+        
         grp_block_array = []
         switch flag1 {
         case 0:
@@ -81,7 +132,7 @@ class Block_logic{
             var check = 0
             for number in allcontacts{
                 check = 0
-                for num in array{
+                for num in combined_grp_array{
                     if(number == num){
                         check = 1
                     }
@@ -98,7 +149,8 @@ class Block_logic{
             break
         }
         print(flag1)
-        print(grp_block_array)
+        print(allcontacts.count)
+        print(grp_block_array.count)
         
         //entry in core data starts
         //let defaults = UserDefaults(suiteName: "group.tag.number")
@@ -142,6 +194,13 @@ class Block_logic{
                         flag = 2
                     }
                 }
+                
+                if(action=="WhiteListGroup"){
+                    if(state == true){
+                        grp_flag = 1
+                    }
+                }
+                
             }
         }catch{
             print(error)
@@ -149,6 +208,10 @@ class Block_logic{
         //fetching numbers
         //first fetch list of all contact numbers
         let defaults = UserDefaults(suiteName: "group.tag.number")
+        
+        let array = defaults!.object(forKey: "grp_block_array") as? [String] ?? [String]()
+        
+        
         allcontacts = defaults!.object(forKey: "all_number") as? [String] ?? [String]()
         //print(allcontacts)
         //fetching all whitelist numbers
@@ -199,6 +262,20 @@ class Block_logic{
         //print(blockarray)
         
         //ends
+        
+        //grp check of both
+        if(grp_flag == 1){
+            grp_white_array = whitearray
+            for number in array{
+                grp_white_array.append(number)
+            }
+        }
+        else{
+            grp_white_array = whitearray
+        }
+        //ends
+        
+        
         //ends
         call_block_array = []
         switch flag {
@@ -209,7 +286,7 @@ class Block_logic{
             var check = 0
             for number in allcontacts{
                 check = 0
-                for num in whitearray{
+                for num in grp_white_array{
                     if(number == num){
                         check = 1
                     }
@@ -225,7 +302,8 @@ class Block_logic{
         default:
             break
         }
-        print(flag)
+        print(call_block_array.count)
+        print(allcontacts.count)
         print(call_block_array)
         
         //entry in core data starts

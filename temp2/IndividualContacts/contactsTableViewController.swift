@@ -38,6 +38,8 @@ class contactsTableViewController: UITableViewController {
     var blockednumbers = [String]()
     var number_contact = [String]()
     
+    let dialObj = DialViewController()
+    
     let b_logic = Block_logic();
     func someMethodIWantToCall(cell: UITableViewCell) {
 
@@ -148,7 +150,7 @@ class contactsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
-        
+
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("whitenumbers").appendingPathExtension("sqlite3")
@@ -157,7 +159,7 @@ class contactsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
-        
+
         do {
             let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileUrl = documentDirectory.appendingPathComponent("enable_W_B_List").appendingPathExtension("sqlite3")
@@ -166,48 +168,48 @@ class contactsTableViewController: UITableViewController {
         } catch {
             print(error)
         }
-
-        //creating blacklist database table
-        let block_table = self.blockTable.create { (table) in
-            table.column(self.number, primaryKey: true)
-            table.column(self.name, primaryKey: false)
-        }
-
-        do {
-            try self.database.run(block_table)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
-        //----------------------------//
-        
-        //creating whitelist database table
-        let white_table = self.whiteTable.create { (table) in
-            table.column(self.whiteNumber, primaryKey: true)
-            table.column(self.whiteName, primaryKey: false)
-        }
-        
-        do {
-            try self.database1.run(white_table)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
+//
+//        //creating blacklist database table
+//        let block_table = self.blockTable.create { (table) in
+//            table.column(self.number, primaryKey: true)
+//            table.column(self.name, primaryKey: false)
+//        }
+//
+//        do {
+//            try self.database.run(block_table)
+//            print("Created Table")
+//        } catch {
+//            print(error)
+//        }
+//        //----------------------------//
+//
+//        //creating whitelist database table
+//        let white_table = self.whiteTable.create { (table) in
+//            table.column(self.whiteNumber, primaryKey: true)
+//            table.column(self.whiteName, primaryKey: false)
+//        }
+//
+//        do {
+//            try self.database1.run(white_table)
+//            print("Created Table")
+//        } catch {
+//            print(error)
+//        }
 
         //--------------------------//
         
         //creating enableTable database table
-        let enable_table = self.enableTable.create { (table) in
-            table.column(self.action, primaryKey: true)
-            table.column(self.state, primaryKey: false)
-        }
-        
-        do {
-            try self.database2.run(enable_table)
-            print("Created Table")
-        } catch {
-            print(error)
-        }
+//        let enable_table = self.enableTable.create { (table) in
+//            table.column(self.action, primaryKey: true)
+//            table.column(self.state, primaryKey: false)
+//        }
+//
+//        do {
+//            try self.database2.run(enable_table)
+//            print("Created Table")
+//        } catch {
+//            print(error)
+//        }
         
         //--------------------------//
         
@@ -286,24 +288,35 @@ class contactsTableViewController: UITableViewController {
     
     func addContactsinArray(){
         //print(self.twoDimensionalArray.count)
+        number_contact.removeAll()
         for number in self.favoritableContacts{
             //print(index)
             //print(number.contact.phoneNumbers[0].value.stringValue)
             number_contact.append(number.contact.phoneNumbers[0].value.stringValue)
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.blockedname.removeAll()
+        self.blockednumbers.removeAll()
+        //self.viewDidLoad()
+        //self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        //self.blockednumbers.removeAll()
+        //self.blockedname.removeAll()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         navigationItem.title = "Contacts"
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        number_contact.removeAll()
+        number_contact = dialObj.GlobalNumberArray
+        
         fetchContacts()
-        addContactsinArray()
+        //addContactsinArray()
         
         print(number_contact)
         let defaults = UserDefaults(suiteName: "group.tag.number")

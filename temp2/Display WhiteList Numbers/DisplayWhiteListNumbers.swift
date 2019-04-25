@@ -80,6 +80,7 @@ class DisplayWhiteListNumbers: UITableViewController {
                 let fullname = user[self.name]
                 let num = user[self.number]
                 
+               
                 self.favoritableContacts.append(FavoritableContacts(name: fullname,number: num, hasFavorited: false))
                 
             }

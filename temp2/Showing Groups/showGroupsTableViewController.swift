@@ -126,6 +126,7 @@ class showGroupsTableViewController: UIViewController {
     
     //function to update myData array after preesing Done button
     @objc func handleExpandClose() {
+        print("inside handle expand close")
         GlobalVariable.blockedGroupsnumbers.removeAll()
         for index in GlobalVariable.myData{
             if(index.theSwitchState){
@@ -169,6 +170,8 @@ class showGroupsTableViewController: UIViewController {
             print(error)
         }
     }
+    
+    
     
     //Adding numbers in blockednumbers array from all the groups whose states are ON
     func addingNumbers(tableName: String){

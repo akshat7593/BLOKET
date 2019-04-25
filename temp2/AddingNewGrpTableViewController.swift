@@ -87,9 +87,9 @@ class AddingNewGrpTableViewController: UITableViewController {
             
             try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
                 
-                
+                if(contact.phoneNumbers.first?.value.stringValue ?? "" != ""){
                 self.favoritableContacts.append(FavoritableContact(contact: contact, name: "aks", hasFavorited: false))
-                
+                }
             })
             
             let names = ExpandableNames(isExpanded: true, names: self.favoritableContacts)

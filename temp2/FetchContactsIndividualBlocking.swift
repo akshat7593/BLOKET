@@ -150,6 +150,12 @@ class FetchContactsIndividualBlocking: UITableViewController {
         tableView.reloadRows(at: indexPathsToReload, with: animationStyle)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.viewDidLoad()
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setup seacrch controller

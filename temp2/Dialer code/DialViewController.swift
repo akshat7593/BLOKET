@@ -9,7 +9,12 @@ import Foundation
 import AudioToolbox
 import UIKit
 import CallKit
+import SQLite
+
 class DialViewController: UIViewController {
+    var database: Connection!
+    var database1: Connection!
+    var database2: Connection!
 
     @IBOutlet weak var zero_outlet: UIButton!
     @IBOutlet weak var cross_outlet: UIButton!
@@ -18,9 +23,97 @@ class DialViewController: UIViewController {
     
     @IBOutlet weak var show_button: UIButton!
     
+    let blockTable = Table("blocknumbers")
+    let number = Expression<String>("number")
+    let name = Expression<String>("name")
+    
+    
+    let whiteTable = Table("whitenumbers")
+    let whiteNumber = Expression<String>("number")
+    let whiteName = Expression<String>("name")
+    
+    let enableTable = Table("enable_W_B_List")
+    let action = Expression<String>("action")
+    let state = Expression<Bool>("state")
+    
+    var GlobalNumberArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //------//
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("blocknumbers").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database = database
+        } catch {
+            print(error)
+        }
+        
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("whitenumbers").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database1 = database
+        } catch {
+            print(error)
+        }
+        
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("enable_W_B_List").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            self.database2 = database
+        } catch {
+            print(error)
+        }
+        
+        //creating blacklist database table
+        let block_table = self.blockTable.create { (table) in
+            table.column(self.number, primaryKey: true)
+            table.column(self.name, primaryKey: false)
+        }
+        
+        do {
+            try self.database.run(block_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        //----------------------------//
+        
+        //creating whitelist database table
+        let white_table = self.whiteTable.create { (table) in
+            table.column(self.whiteNumber, primaryKey: true)
+            table.column(self.whiteName, primaryKey: false)
+        }
+        
+        do {
+            try self.database1.run(white_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        
+        //--------------------------//
+        
+        //creating enableTable database table
+        let enable_table = self.enableTable.create { (table) in
+            table.column(self.action, primaryKey: true)
+            table.column(self.state, primaryKey: false)
+        }
+        
+        do {
+            try self.database2.run(enable_table)
+            print("Created Table")
+        } catch {
+            print(error)
+        }
+        
+        //--------------------------//
+        
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector (tap))  //Tap function will call when user tap on button
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(long))  //Long function will call when user long press on button.
         tapGesture.numberOfTapsRequired = 1
