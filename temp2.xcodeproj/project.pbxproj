@@ -55,6 +55,7 @@
 		ACE93129221C711800229A27 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE93128221C711800229A27 /* TableViewCell.swift */; };
 		ACE9312B221C71E600229A27 /* fetchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9312A221C71E600229A27 /* fetchViewController.swift */; };
 		ACEE4F4A2249F8580017793E /* Block_logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE4F492249F8580017793E /* Block_logic.swift */; };
+		ACF0851D2278AEBD00EF7DE0 /* DialerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0851C2278AEBD00EF7DE0 /* DialerViewController.swift */; };
 		ACF090E1225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */; };
 		ACF090E3225DBC11001DFAC1 /* AddingnewGrpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */; };
 /* End PBXBuildFile section */
@@ -219,6 +220,7 @@
 		ACE93128221C711800229A27 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		ACE9312A221C71E600229A27 /* fetchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchViewController.swift; sourceTree = "<group>"; };
 		ACEE4F492249F8580017793E /* Block_logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block_logic.swift; sourceTree = "<group>"; };
+		ACF0851C2278AEBD00EF7DE0 /* DialerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialerViewController.swift; sourceTree = "<group>"; };
 		ACF090DF225DB5BC001DFAC1 /* Call_grp_blocking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Call_grp_blocking.entitlements; sourceTree = "<group>"; };
 		ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingNewGrpTableViewController.swift; sourceTree = "<group>"; };
 		ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingnewGrpCell.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD65ACE21FEF01900CE19FE /* DialViewController.swift */,
+				ACF0851C2278AEBD00EF7DE0 /* DialerViewController.swift */,
 			);
 			path = "Dialer code";
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				AC967899226495C2006D83F7 /* IndividualCustomHeader.swift in Sources */,
 				ACE9312B221C71E600229A27 /* fetchViewController.swift in Sources */,
 				ACA0C79E225B62B9005CF945 /* ContactsCell.swift in Sources */,
+				ACF0851D2278AEBD00EF7DE0 /* DialerViewController.swift in Sources */,
 				AC17D5F62212846C00DF9D3A /* MsgViewController.swift in Sources */,
 				ACA0C7A4225BCF33005CF945 /* BlockedExpandableNames.swift in Sources */,
 				ACD65ACF21FEF01900CE19FE /* DialViewController.swift in Sources */,

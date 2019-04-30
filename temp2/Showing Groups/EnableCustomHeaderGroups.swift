@@ -138,7 +138,7 @@ class EnableCustomHeaderGroups: UITableViewCell {
     
     @IBAction func white_switch_action(_ sender: UISwitch) {
         if(sender.isOn ==  true){
-            do {
+            do {print("white list og group switch is on")
                 let users = try self.database.prepare(self.enableTable)
                 for user in users {
                     

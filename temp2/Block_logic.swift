@@ -122,7 +122,9 @@ class Block_logic{
         else{
             combined_grp_array = array
         }
-        
+        print("value in combined array................")
+        print(combined_grp_array)
+        print(combined_grp_array.count)
         grp_block_array = []
         switch flag1 {
         case 0:
@@ -148,6 +150,7 @@ class Block_logic{
         default:
             break
         }
+        print("value of group contacts blocked and total")
         print(flag1)
         print(allcontacts.count)
         print(grp_block_array.count)
@@ -155,17 +158,22 @@ class Block_logic{
         //entry in core data starts
         //let defaults = UserDefaults(suiteName: "group.tag.number")
         defaults!.setValue(grp_block_array, forKey: "grp_directory_array")
+        defaults!.setValue(combined_grp_array, forKey: "grp_whitelist_array")
+        defaults!.setValue(flag1, forKey: "flag_group_black")
+        //flag_individual_group
+        
+        //grp_blocklist_array
         //ends
         
         //reloading extension
         CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-grp-blocking", completionHandler: {(error) -> Void in if let error = error {
-            print("akshat"+error.localizedDescription)
+            print("akshat in block logic for group"+error.localizedDescription)
             }})
         //ends
     }
     //ends
     
-    //function for white list and blacklist
+    //function for white list and blacklist for individual
     func black_white(){
         flag = 0
         do {
@@ -302,18 +310,22 @@ class Block_logic{
         default:
             break
         }
+        print("count of number in white list------------")
         print(call_block_array.count)
+        print("count of all numbers------------")
         print(allcontacts.count)
         print(call_block_array)
         
         //entry in core data starts
         //let defaults = UserDefaults(suiteName: "group.tag.number")
         defaults!.setValue(call_block_array, forKey: "block_array")
+        defaults!.setValue(grp_white_array, forKey: "individual_whitelist_array")
+        defaults!.setValue(flag, forKey: "flag_individual_black")
         //ends
         
         //reloading extension
         CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
-            print("akshat"+error.localizedDescription)
+            print("akshat in block_logic for individual"+error.localizedDescription)
             }})
         
     }

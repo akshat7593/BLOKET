@@ -33,10 +33,41 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //
         // Numbers must be provided in numerically ascending order.
         //starts own
+        
+        
+        var finalArray = [Int64]()
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "grp_directory_array") as? [String] ?? [String]()
-        print("array in extension.......")
-        print(array)
+        
+        //list of white listed numbers
+        let grp_whitelist_array = defaults!.object(forKey: "grp_whitelist_array") as? [String] ?? [String]()
+        //ends
+        
+        //converting array to Set
+        var WhiteNumberSet = Set<Int64>()
+        for num in grp_whitelist_array{
+            var newString = num.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString[newString.startIndex]=="0"){
+                newString.remove(at: newString.startIndex)
+            }
+            if(newString.count==10){
+                newString="91"+newString
+            }
+            if(newString.count==12){
+                WhiteNumberSet.insert(Int64(newString)!)
+            }
+            
+        }
+        //var flag = Int16(-1)
+        let flag = (defaults!.object(forKey: "flag_group_black") as? Int16)!
+        print("value of flag for black or white")
+        print(flag)
+        if(flag == 2){
+            WhiteNumberSet.removeAll()
+        }
+        
+        print("array in extension..of group blocking.....")
+        print(array.count)
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -51,10 +82,18 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
-        print("temp in extension.......")
-        print(temp)
+        print("temp in extension....of group...")
+        print(temp.count)
+        var previous = Int64(0)
+        for num in temp{
+            if(num>previous && !WhiteNumberSet.contains(num)){
+                finalArray.append(num)
+                previous = num
+            }
+        }
+        print(finalArray.count)
         //ends
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = temp
+        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = finalArray
         for phoneNumber in allPhoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
@@ -69,9 +108,34 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //starts own
         let defaults = UserDefaults(suiteName: "group.tag.number")
         let array = defaults!.object(forKey: "grp_directory_array") as? [String] ?? [String]()
+        //list of white listed numbers
+        let grp_whitelist_array = defaults!.object(forKey: "grp_whitelist_array") as? [String] ?? [String]()
+        //ends
+        
+        //converting array to Set
+        var WhiteNumberSet = Set<Int64>()
+        for num in grp_whitelist_array{
+            var newString = num.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString[newString.startIndex]=="0"){
+                newString.remove(at: newString.startIndex)
+            }
+            if(newString.count==10){
+                newString="91"+newString
+            }
+            if(newString.count==12){
+                WhiteNumberSet.insert(Int64(newString)!)
+            }
+            
+        }
+        let flag = defaults!.object(forKey: "flag_group_black") as? Int16
+        print("value of flag for black or white")
+        print(flag!)
+        if(flag! == 2){
+            WhiteNumberSet.removeAll()
+        }
         print("array in extension")
         print(array)
-        
+        var finalArray = [Int64]()
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -86,11 +150,18 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
-        print("temp in extension")
-        print(temp)
+        print("temp in extension of groups")
+        print(temp.count)
+        var previous = Int64(0)
+        for num in temp{
+            if(num>previous && !WhiteNumberSet.contains(num)){
+                finalArray.append(num)
+                previous = num
+            }
+        }
         //ends
         
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = temp
+        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = finalArray
         for phoneNumber in phoneNumbersToAdd {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }

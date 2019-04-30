@@ -12,6 +12,7 @@ import SQLite
 import CoreData
 class CallDirectoryHandler: CXCallDirectoryProvider {
     //var array1 : Array<Any> = []
+    
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
         //------------------
@@ -62,11 +63,36 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //
         //print(array1)
         // Numbers must be provided in numerically ascending order.
+        var finalArray = [Int64]()
+        
         let defaults = UserDefaults(suiteName: "group.tag.number")
         //(suiteName: "group.tag.number")
         var array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
-        array.sort()
+        //array.sort()
+        //list of white listed numbers
+        let individual_whitelist_array = defaults!.object(forKey: "individual_whitelist_array") as? [String] ?? [String]()
+        //ends
+        
+        //Converting array to Set
+        var WhiteNumberSet = Set<Int64>()
+        for num in individual_whitelist_array{
+            var newString = num.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString[newString.startIndex]=="0"){
+                newString.remove(at: newString.startIndex)
+            }
+            if(newString.count==10){
+                newString="91"+newString
+            }
+            if(newString.count==12){
+                WhiteNumberSet.insert(Int64(newString)!)
+            }
+            
+        }
+        
+        
+        print("array sorted according to name")
         print(array)
+        print(array.count)
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -81,9 +107,22 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
-        print(temp)
+        print("array sorted according to number")
+        //print(temp)
+        let flag = defaults!.object(forKey: "flag_individual_black") as? Int16
+        if(flag! == 2){
+            WhiteNumberSet.removeAll()
+        }
+        var previous = Int64(0)
+        for num in temp{
+            if(num>previous && !WhiteNumberSet.contains(num)){
+                finalArray.append(num)
+                previous = num
+            }
+        }
         
-            let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = temp
+        print(temp.count)
+            let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = finalArray
         for phoneNumber in allPhoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
@@ -96,6 +135,8 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         //918460663919
         
         //removing old value from the call directory extension
+        var finalArray = [Int64]()
+        
         let defaults = UserDefaults(suiteName: "group.tag.number")
         //(suiteName: "group.tag.number")
 //starts.......................
@@ -117,7 +158,35 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         context.removeAllBlockingEntries()
         //Adding new Numbers
         var array = defaults!.object(forKey: "block_array") as? [String] ?? [String]()
-        array.sort()
+        //array.sort()
+        //list of white listed numbers
+        let individual_whitelist_array = defaults!.object(forKey: "individual_whitelist_array") as? [String] ?? [String]()
+        //ends
+        
+        //array to set
+        var WhiteNumberSet = Set<Int64>()
+        for num in individual_whitelist_array{
+            var newString = num.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if(newString[newString.startIndex]=="0"){
+                newString.remove(at: newString.startIndex)
+            }
+            if(newString.count==10){
+                newString="91"+newString
+            }
+            if(newString.count==12){
+                WhiteNumberSet.insert(Int64(newString)!)
+            }
+            
+        }
+        print("--test WhitenumberSet -- ")
+        print(WhiteNumberSet)
+        //var flag = Int16(-1)
+        let flag = (defaults!.object(forKey: "flag_individual_black") as? Int16)!
+        print("value of flag for black or white")
+        print(flag)
+        if(flag == 2){
+            WhiteNumberSet.removeAll()
+        }
         var temp : Array<Int64> = []
         for item in array {
             var newString = item.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
@@ -132,11 +201,21 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
             }
         }
         temp.sort()
-        print(temp)
+        //print(temp)
+        var previous = Int64(0)
+        for num in temp{
+            if(num>previous && !WhiteNumberSet.contains(num)){
+                finalArray.append(num)
+                previous = num
+            }
+        }
+        print(finalArray.count)
         print("add----------------------------")
         
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = temp
+        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = finalArray
         for phoneNumber in phoneNumbersToAdd {
+            print(phoneNumber)
+            print("\n")
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
 

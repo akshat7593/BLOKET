@@ -129,7 +129,7 @@ class DisplayBlockedNumbers: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36
+        return 45
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

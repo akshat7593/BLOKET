@@ -41,6 +41,9 @@ class contactsTableViewController: UITableViewController {
     let dialObj = DialViewController()
     
     let b_logic = Block_logic();
+    
+    var NumberSet = Set<String>()
+    
     func someMethodIWantToCall(cell: UITableViewCell) {
 
         
@@ -72,6 +75,10 @@ class contactsTableViewController: UITableViewController {
             let filterarray = blockednumbers.filter{ $0 != num }
             blockednumbers = filterarray
         }
+        
+        print(blockednumbers)
+        print("--------- new --------")
+        print(blockedname)
         
         let hasFavorited = contact.hasFavorited
         twoDimensionalArray[indexPathTapped.section].names[indexPathTapped.row].hasFavorited = !hasFavorited
@@ -249,12 +256,15 @@ class contactsTableViewController: UITableViewController {
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointerIfYouWantToStopEnumerating) in
 
                         if(contact.phoneNumbers.first?.value.stringValue ?? "" != ""){
+                            
                             self.favoritableContacts.append(FavoritableContact(contact: contact, name: "aks", hasFavorited: false))
                         }
                         //self.number_contact.append(contact.phoneNumbers[0].value.stringValue)
                         
                     })
-                    
+                    print("no duplicate--------------------")
+                    print(self.NumberSet)
+                    print("---------------------------------")
                     let names = ExpandableNames(isExpanded: true, names: self.favoritableContacts)
                     self.twoDimensionalArray = [names]
 
@@ -292,12 +302,15 @@ class contactsTableViewController: UITableViewController {
         for number in self.favoritableContacts{
             //print(index)
             //print(number.contact.phoneNumbers[0].value.stringValue)
+            print(number_contact.count)
             number_contact.append(number.contact.phoneNumbers[0].value.stringValue)
+
+            
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.blockedname.removeAll()
-        self.blockednumbers.removeAll()
+        //self.blockedname.removeAll()
+        //self.blockednumbers.removeAll()
         //self.viewDidLoad()
         //self.tableView.reloadData()
     }
@@ -316,8 +329,9 @@ class contactsTableViewController: UITableViewController {
         number_contact = dialObj.GlobalNumberArray
         
         fetchContacts()
-        //addContactsinArray()
-        
+        addContactsinArray()
+        print("ALL contact array")
+        print(number_contact.count)
         print(number_contact)
         let defaults = UserDefaults(suiteName: "group.tag.number")
         defaults!.setValue(number_contact, forKey: "all_number")
@@ -327,7 +341,7 @@ class contactsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "IndividualCustomHeader") as! IndividualCustomHeader
-        headerCell.backgroundColor = UIColor.black
+        headerCell.backgroundColor = UIColor.gray
         headerCell.link = self
         return headerCell
         
