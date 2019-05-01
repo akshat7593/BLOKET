@@ -8,7 +8,7 @@
 
 import UIKit
 import SQLite
-class GroupViewController: UIViewController {
+class GroupViewController: UIViewController,UITextFieldDelegate {
         let groupTextField = UITextField(frame: CGRect(x: 20, y: 100, width: 275, height: 40))
     
         var database: Connection!
@@ -42,10 +42,15 @@ class GroupViewController: UIViewController {
         addContactsbutton.setTitle("Add Contacts ", for: .normal)
         addContactsbutton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         self.view.addSubview(addContactsbutton)
-            
+        self.groupTextField.delegate = self
         //----------------------
         
         
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("hide keyboard")
+        self.view.endEditing(true)
+        return false
     }
     
     @objc func buttonAction(sender: UIButton!) {

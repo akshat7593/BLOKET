@@ -380,7 +380,30 @@ class contactsTableViewController: UITableViewController {
 
         b_logic.black_white()
     }
+    //function for individual blocking
+    func AddtoBlackList_individual(number: String) {
+        var database3: Connection!
+        do {
+            let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileUrl = documentDirectory.appendingPathComponent("blocknumbers").appendingPathExtension("sqlite3")
+            let database = try Connection(fileUrl.path)
+            database3 = database
+        } catch {
+            print(error)
+        }
+        
+            let insertUser = self.blockTable.insert(self.number <- number,self.name <- "Unknown")
+            do {
+                try database3.run(insertUser)
+                print("INSERTED USER")
+            } catch {
+                print(error)
+            }
+        b_logic.black_white()
+    }
     
+    
+    //ends
     @objc func AddtoWhiteList(button: UIButton){
         for (index,num) in blockednumbers.enumerated(){
             //print(type(of: num))

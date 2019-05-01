@@ -43,9 +43,13 @@ class FetchContactsIndividualBlocking: UITableViewController {
         else{
              number1=""
         }
+        //test for calling individual
+        var newString = number1.components(separatedBy:CharacterSet.decimalDigits.inverted).joined(separator: "")
+        
+        //ends
         
         //calling starts
-        let url:NSURL = NSURL(string: "telprompt://\(number1)")!
+        let url:NSURL = NSURL(string: "telprompt://\(newString)")!
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         print(url)
         
@@ -74,15 +78,15 @@ class FetchContactsIndividualBlocking: UITableViewController {
         
         let store = CNContactStore()
         
-        store.requestAccess(for: .contacts) { (granted, err) in
-            if let err = err {
-                print("Failed to request access:", err)
-                return
-            }
-            
-            if granted {
-                print("Access granted")
-                
+//        store.requestAccess(for: .contacts) { (granted, err) in
+//            if let err = err {
+//                print("Failed to request access:", err)
+//                return
+//            }
+//
+//            if granted {
+//                print("Access granted")
+        
                 let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 request.sortOrder = CNContactSortOrder.givenName
@@ -112,10 +116,10 @@ class FetchContactsIndividualBlocking: UITableViewController {
                     print("Failed to enumerate contacts:", err)
                 }
                 
-            } else {
-                print("Access denied..")
-            }
-        }
+//            } else {
+//                print("Access denied..")
+//            }
+//        }
     }
     
     var showIndexPaths = false
