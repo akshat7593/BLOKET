@@ -140,7 +140,7 @@ class DialViewController: UIViewController {
 //    }
     private func refreshExtensionState() {
         print("inside func refreshExtensionState")
-        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.temp2.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "com.akshat.Bloket.Call-Blocking", completionHandler: {(error) -> Void in if let error = error {
             print("akshat"+error.localizedDescription)
             }})
     }

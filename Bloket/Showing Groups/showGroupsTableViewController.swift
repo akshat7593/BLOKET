@@ -133,7 +133,15 @@ class showGroupsTableViewController: UIViewController {
                 addingNumbers(tableName: index.theTitle)
                 updatingState(groupName: index.theTitle)
             }
+            else{
+                //addingNumbers(tableName: index.theTitle)
+                updatingStateFalse(groupName: index.theTitle)
+            }
         }
+        
+        print("----- FINAL GROUP NUMBERS TO BLOCK")
+        print(GlobalVariable.blockedGroupsnumbers)
+        print("----")
         let defaults = UserDefaults(suiteName: "group.tag.number")
         defaults!.setValue(GlobalVariable.blockedGroupsnumbers, forKey: "grp_block_array")
         b_logic.grp_block()
@@ -158,9 +166,24 @@ class showGroupsTableViewController: UIViewController {
     //updating ON/OFF state in global GroupName Table
     func updatingState(groupName: String?){
         //let users = try self.database1.prepare(self.usersTable)
-        
+        //print(self.onoff)
         let alice = self.usersTable.filter(self.names == groupName!)
         let updatedata = alice.update(self.onoff <- true)
+        
+        do{
+            try self.database1.run(updatedata)
+        }
+            
+        catch {
+            print(error)
+        }
+    }
+    
+    func updatingStateFalse(groupName: String?){
+        //let users = try self.database1.prepare(self.usersTable)
+        //print(self.onoff)
+        let alice = self.usersTable.filter(self.names == groupName!)
+        let updatedata = alice.update(self.onoff <- false)
         
         do{
             try self.database1.run(updatedata)
