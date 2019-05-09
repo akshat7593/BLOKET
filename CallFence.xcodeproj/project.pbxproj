@@ -206,13 +206,13 @@
 		ACA0C7B6225D93BE005CF945 /* AddMoreContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsController.swift; sourceTree = "<group>"; };
 		ACA0C7B8225DAAC6005CF945 /* AddMoreContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreContactsTableViewCell.swift; sourceTree = "<group>"; };
 		ACA185002270E8D40064B4FC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		ACD65AA921FED2CA00CE19FE /* Bloket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD65AA921FED2CA00CE19FE /* CallFence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallFence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65AAC21FED2CA00CE19FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD65AAE21FED2CA00CE19FE /* BlockedNumberDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedNumberDisplay.swift; sourceTree = "<group>"; };
 		ACD65AB521FED2CD00CE19FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD65AB821FED2CD00CE19FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD65ABA21FED2CD00CE19FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACD65ABF21FED2CD00CE19FE /* BloketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD65ABF21FED2CD00CE19FE /* CallFenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CallFenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD65ACE21FEF01900CE19FE /* DialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialViewController.swift; sourceTree = "<group>"; };
 		ACE930F2221BDE4E00229A27 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		ACE93126221C70BB00229A27 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -359,7 +359,7 @@
 		ACD65AA021FED2CA00CE19FE = {
 			isa = PBXGroup;
 			children = (
-				ACD65AAB21FED2CA00CE19FE /* Bloket */,
+				ACD65AAB21FED2CA00CE19FE /* CallFence */,
 				AC9E2549220F12F9005CA487 /* Call_Blocking */,
 				ACA0C7AA225D125B005CF945 /* Call_grp_blocking */,
 				ACD65AAA21FED2CA00CE19FE /* Products */,
@@ -371,15 +371,15 @@
 		ACD65AAA21FED2CA00CE19FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ACD65AA921FED2CA00CE19FE /* Bloket.app */,
-				ACD65ABF21FED2CD00CE19FE /* BloketTests.xctest */,
+				ACD65AA921FED2CA00CE19FE /* CallFence.app */,
+				ACD65ABF21FED2CD00CE19FE /* CallFenceTests.xctest */,
 				AC9E2548220F12F9005CA487 /* Call_Blocking.appex */,
 				ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ACD65AAB21FED2CA00CE19FE /* Bloket */ = {
+		ACD65AAB21FED2CA00CE19FE /* CallFence */ = {
 			isa = PBXGroup;
 			children = (
 				AC9678B1226503C5006D83F7 /* Showing Groups */,
@@ -407,7 +407,7 @@
 				ACF090E0225DBBF2001DFAC1 /* AddingNewGrpTableViewController.swift */,
 				ACF090E2225DBC11001DFAC1 /* AddingnewGrpCell.swift */,
 			);
-			path = Bloket;
+			path = CallFence;
 			sourceTree = "<group>";
 		};
 		ACE930F3221BDE4E00229A27 /* Products */ = {
@@ -461,9 +461,9 @@
 			productReference = ACA0C7A9225D125B005CF945 /* Call_grp_blocking.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		ACD65AA821FED2CA00CE19FE /* Bloket */ = {
+		ACD65AA821FED2CA00CE19FE /* CallFence */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "Bloket" */;
+			buildConfigurationList = ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "CallFence" */;
 			buildPhases = (
 				ACD65AA521FED2CA00CE19FE /* Sources */,
 				ACD65AA621FED2CA00CE19FE /* Frameworks */,
@@ -478,14 +478,14 @@
 				ACE9310E221BDE8500229A27 /* PBXTargetDependency */,
 				ACA0C7AF225D125B005CF945 /* PBXTargetDependency */,
 			);
-			name = Bloket;
+			name = CallFence;
 			productName = temp2;
-			productReference = ACD65AA921FED2CA00CE19FE /* Bloket.app */;
+			productReference = ACD65AA921FED2CA00CE19FE /* CallFence.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ACD65ABE21FED2CD00CE19FE /* BloketTests */ = {
+		ACD65ABE21FED2CD00CE19FE /* CallFenceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACD65ACB21FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "BloketTests" */;
+			buildConfigurationList = ACD65ACB21FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "CallFenceTests" */;
 			buildPhases = (
 				ACD65ABB21FED2CD00CE19FE /* Sources */,
 				ACD65ABC21FED2CD00CE19FE /* Frameworks */,
@@ -496,9 +496,9 @@
 			dependencies = (
 				ACD65AC121FED2CD00CE19FE /* PBXTargetDependency */,
 			);
-			name = BloketTests;
+			name = CallFenceTests;
 			productName = temp2Tests;
-			productReference = ACD65ABF21FED2CD00CE19FE /* BloketTests.xctest */;
+			productReference = ACD65ABF21FED2CD00CE19FE /* CallFenceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -556,7 +556,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ACD65AA421FED2CA00CE19FE /* Build configuration list for PBXProject "Bloket" */;
+			buildConfigurationList = ACD65AA421FED2CA00CE19FE /* Build configuration list for PBXProject "CallFence" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -575,8 +575,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				ACD65AA821FED2CA00CE19FE /* Bloket */,
-				ACD65ABE21FED2CD00CE19FE /* BloketTests */,
+				ACD65AA821FED2CA00CE19FE /* CallFence */,
+				ACD65ABE21FED2CD00CE19FE /* CallFenceTests */,
 				AC9E2547220F12F9005CA487 /* Call_Blocking */,
 				ACA0C7A8225D125B005CF945 /* Call_grp_blocking */,
 			);
@@ -755,7 +755,7 @@
 		};
 		ACD65AC121FED2CD00CE19FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ACD65AA821FED2CA00CE19FE /* Bloket */;
+			target = ACD65AA821FED2CA00CE19FE /* CallFence */;
 			targetProxy = ACD65AC021FED2CD00CE19FE /* PBXContainerItemProxy */;
 		};
 		ACE9310E221BDE8500229A27 /* PBXTargetDependency */ = {
@@ -790,7 +790,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.Bloket.Call-Blocking";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.CallFence.Call-Blocking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -811,7 +811,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.Bloket.Call-Blocking";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.CallFence.Call-Blocking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -832,7 +832,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.Bloket.Call-grp-blocking";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.CallFence.Call-grp-blocking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -853,7 +853,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.Bloket.Call-grp-blocking";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.akshat.CallFence.Call-grp-blocking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -982,15 +982,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Bloket/Bloket.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CallFence/CallFence.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = "$(SRCROOT)/Bloket/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CallFence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.Bloket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.CallFence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1002,15 +1002,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Bloket/Bloket.entitlements;
+				CODE_SIGN_ENTITLEMENTS = CallFence/CallFence.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = "$(SRCROOT)/Bloket/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/CallFence/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.Bloket;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.CallFence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1024,17 +1024,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = Bloket2Tests/Info.plist;
+				INFOPLIST_FILE = CallFence2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.Bloket2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.CallFence2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloket.app/Bloket";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CallFence.app/CallFence";
 			};
 			name = Debug;
 		};
@@ -1045,17 +1045,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4624FBVQVB;
-				INFOPLIST_FILE = Bloket2Tests/Info.plist;
+				INFOPLIST_FILE = CallFence2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.Bloket2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.akshat.CallFence2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bloket.app/Bloket";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CallFence.app/CallFence";
 			};
 			name = Release;
 		};
@@ -1080,7 +1080,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACD65AA421FED2CA00CE19FE /* Build configuration list for PBXProject "Bloket" */ = {
+		ACD65AA421FED2CA00CE19FE /* Build configuration list for PBXProject "CallFence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ACD65AC621FED2CD00CE19FE /* Debug */,
@@ -1089,7 +1089,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "Bloket" */ = {
+		ACD65AC821FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "CallFence" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ACD65AC921FED2CD00CE19FE /* Debug */,
@@ -1098,7 +1098,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACD65ACB21FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "BloketTests" */ = {
+		ACD65ACB21FED2CD00CE19FE /* Build configuration list for PBXNativeTarget "CallFenceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ACD65ACC21FED2CD00CE19FE /* Debug */,
