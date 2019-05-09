@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Block" representedClassName="Block" syncable="YES" codeGenerationType="class">
+        <attribute name="all_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="block_array" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="block_array_old" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flag_group_black" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="flag_individual_black" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="grp_block_array" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grp_directory_array" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grp_whitelist_array" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="individual_whitelist_array" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Block" positionX="-63" positionY="-18" width="128" height="180"/>
+    </elements>
+</model>
